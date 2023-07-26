@@ -2,7 +2,7 @@ package loop;
 
 import java.util.Scanner;
 
-public class task32 {
+public class Task32 {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         int n = console.nextInt();
