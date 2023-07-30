@@ -14,7 +14,7 @@ public class Task44 {
         int sumX = 0;
         int sumY = 0;
 
-        for (int i = 0; i < strX.length(); i++) {
+        for (int i = 0; i < strX.length(); i++) {   //а это норм что пробелом разделяю где-то логически? илиСплошн надо?
             sumX += arrayX[i];
         }
         for (int i = 0; i < strY.length(); i++) {
