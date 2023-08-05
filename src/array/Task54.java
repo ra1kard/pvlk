@@ -1,0 +1,46 @@
+package array;
+
+public class Task54 {
+    public static void main(String[] args) {
+        int[] array1 = {10, 20, 30, 40, 50};
+        int[] array2 = {50, 40, 30, 20, 10};
+
+        //int[] array1 = {27, 39, 42};
+        //int[] array2 = {-8, 14, 0, 75};
+
+        //int[] array1 = {2, 5, -9, 100, -10, 8};
+        //int[] array2 = {-2, 15, 7, 7};
+
+        //int[] array1 = {10, 20, 30, 40, 50};
+        //int[] array2 = {60, 70};
+
+        int[] array3 = new int[array1.length + array2.length];
+        int j = 0;
+        double sum = 0;
+        int max = array1[0];
+
+        for (int i = 0; i < array3.length; i++) {
+            if (i < array1.length) {                    //если мы в рамках первого массива
+                array3[i] = array1[i];
+            } else {                                    //если мы в рамках второго массива
+                array3[i] = array2[j];
+                j++;
+            }
+            sum += array3[i];
+            max = array3[i] > max ? array3[i] : max;
+        }
+
+        for (int i : array3) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        System.out.println(sum / array3.length);    //среднее арифметическое
+        System.out.println(max);
+
+        if (array3.length % 2 == 0) {
+            System.out.println((array3[array3.length/2 - 1] + array3[array3.length/2]) / 2);
+        } else {
+            System.out.println(array3[array3.length/2]);
+        }
+    }
+}
