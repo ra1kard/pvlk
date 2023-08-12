@@ -9,7 +9,7 @@ public class Task7 {
         int n = console.nextInt();
 
         char[] chArray= str.toCharArray();
-        chArray[n] = 64;
+        chArray[n] = '@';
         System.out.println(String.valueOf(chArray));
     }
 }
