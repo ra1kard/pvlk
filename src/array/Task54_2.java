@@ -19,11 +19,7 @@ public class Task54_2 {
         int max = array1[0];
 
         for (int i = 0; i < array3.length; i++) {
-            if (i < array1.length) {                        //если мы в рамках первого массива
-                array3[i] = array1[i];
-            } else {                                        //если мы в рамках второго массива
-                array3[i] = array2[i - (array1.length)];    //ПОПРАВИЛ
-            }
+            array3[i] = i < array1.length ? array1[i] : array2[i - (array1.length)];
             sum += array3[i];
             if (array3[i] > max) {
                 max = array3[i];
