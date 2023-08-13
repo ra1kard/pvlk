@@ -1,6 +1,6 @@
 package array;
 
-public class Task54 {
+public class Task54_2 {
     public static void main(String[] args) {
         int[] array1 = {10, 20, 30, 40, 50};
         int[] array2 = {50, 40, 30, 20, 10};
@@ -15,16 +15,14 @@ public class Task54 {
         //int[] array2 = {60, 70};
 
         int[] array3 = new int[array1.length + array2.length];
-        int j = 0;
         double sum = 0;
         int max = array1[0];
 
         for (int i = 0; i < array3.length; i++) {
-            if (i < array1.length) {                    //если мы в рамках первого массива
+            if (i < array1.length) {                        //если мы в рамках первого массива
                 array3[i] = array1[i];
-            } else {                                    //если мы в рамках второго массива
-                array3[i] = array2[j];
-                j++;
+            } else {                                        //если мы в рамках второго массива
+                array3[i] = array2[i - (array1.length)];    //ПОПРАВИЛ
             }
             sum += array3[i];
             if (array3[i] > max) {
@@ -46,4 +44,3 @@ public class Task54 {
         }
     }
 }
-//j убрать и использовать i
