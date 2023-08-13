@@ -11,8 +11,8 @@ public class Task6 {
         if (k > str.length()-1) {
             System.out.println("Некорректный номер");
         } else {
-            System.out.print(str.substring(0, k));
-            System.out.println(str.substring(k+1));
+            str = str.substring(0, k) + str.substring(k+1);
+            System.out.print(str);
         }
     }
 }
