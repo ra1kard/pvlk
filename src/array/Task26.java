@@ -20,8 +20,7 @@ public class Task26 {
 
         //числа от start до end занести в массив
         for (int i = 0; i < array.length; i++) {
-            array[i] = start;
-            start++;
+            array[i] = start++;
         }
 
         for (int i : array) {
