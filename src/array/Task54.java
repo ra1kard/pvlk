@@ -27,7 +27,9 @@ public class Task54 {
                 j++;
             }
             sum += array3[i];
-            max = array3[i] > max ? array3[i] : max;
+            if (array3[i] > max) {
+                max = array3[i];
+            }
         }
 
         for (int i : array3) {
