@@ -16,7 +16,6 @@ public class Task35 {
         while (rsl != n) {
             rsl = x1 + x2;
             if (rsl > n) {
-                //напр 232, лучше указывать ошибку наглядно, что след число Фибо 233, но не стал тратить время
                 System.out.println();
                 System.out.println(n + " не является числом Фибоначчи");
                 fibo = false;
@@ -35,7 +34,8 @@ public class Task35 {
             System.out.println("Порядковый номер числа Фибоначчи = 2");
         } else if (fibo) {
             System.out.println();
-            System.out.println("Подрядковый номер числа Фибоначчи = " + (i+2));
+            System.out.println("Порядковый номер числа Фибоначчи = " + (i+2));
         }
     }
 }
+//сократить код, меньше if, не использовать break
