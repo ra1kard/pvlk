@@ -22,3 +22,4 @@ public class Task40 {
         System.out.println(" = " + rsl);
     }
 }
+//решение через for (сравнить 2 решения)
