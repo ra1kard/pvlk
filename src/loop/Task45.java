@@ -24,3 +24,4 @@ public class Task45 {
         }
     }
 }
+//решение через 1 цикл while
