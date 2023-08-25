@@ -12,6 +12,16 @@ public class Task9 {
         int count = 1;
 
         for (int i = 1; i < chArray.length; i++) {
+            newStr += (i % n == 0) ? "##": chArray[i];
+
+            /*if (i % n == 0) {
+                newStr += "##";
+            } else {
+                newStr += chArray[i];
+            }*/
+        }
+
+        /*for (int i = 1; i < chArray.length; i++) {
             if (count < n) {
                 newStr += chArray[i];
                 count++;
@@ -19,8 +29,11 @@ public class Task9 {
                 newStr += "##";
                 count = 1;
             }
-        }
+        }*/
 
-        System.out.println(newStr);
+        str = newStr;
+        System.out.println(str);
     }
 }
+
+//запись себе - сделай копии и смотри альтернативные решения
