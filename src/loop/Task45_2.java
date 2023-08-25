@@ -13,8 +13,7 @@ public class Task45_2 {
 
         while (i < 3) {
             if (i == 0) {
-                System.out.print(arrayX[k]);
-                System.out.print(arrayX[k+1]);
+                System.out.print(arrayX[k] + "" + arrayX[k+1]); //доделать
                 System.out.print(arrayX[k+2] + " ");
                 k -= 3;
             } else if (i == 1) {
@@ -31,3 +30,4 @@ public class Task45_2 {
         }
     }
 }
+//решение без символов и без строк (воспользоваться остатком от деления, также остается while)
