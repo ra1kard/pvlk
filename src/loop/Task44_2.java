@@ -14,7 +14,7 @@ public class Task44_2 {
 
         for (int i = 0; i < strX.length(); i++) {
             char ch = strX.charAt(i);
-            sumX += Character.getNumericValue(ch);      //можно здесь сократить, но мне так потом пока читабельнее
+            sumX += Character.getNumericValue(ch);      //можно здесь сократить, но мне так пока читабельнее
         }
         for (int i = 0; i < strY.length(); i++) {
             char ch = strY.charAt(i);
@@ -25,3 +25,4 @@ public class Task44_2 {
         System.out.println("Числа " + x + " и " + y + rsl);
     }
 }
+//попробовать решить без исп строк (не переводить в стрингу и символов (без char)
