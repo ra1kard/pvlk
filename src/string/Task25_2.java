@@ -20,29 +20,16 @@ public class Task25_2 {
         for (int i = 0; i < array.length; i++) {
             if (longest < array[i].length()) {
                 longest = array[i].length();
-            }
-            if (shortest > array[i].length()) {
-                shortest = array[i].length();
-            }
-        }
-
-        //номер длинного слова в массиве (если таких слов несколько то возьмите ПЕРВОЕ самое длинное)
-        for (int i = 0; i < array.length; i++) {
-            if (longest == array[i].length()) {
                 longOrder = i;
-                break;
             }
-        }
-        System.out.println("longOrder = " + longOrder);
-
-        //номер короткого слова (если таких слов несколько то возьмите ПОСЛЕДНЕЕ самое длинное)
-        for (int i = 0; i < array.length; i++) {
-            if (shortest == array[i].length()) {
+            if (shortest >= array[i].length()) {
+                shortest = array[i].length();
                 shortOrder = i;
             }
         }
-        System.out.println("shortOrder = " + shortOrder);
 
+        System.out.println("longOrder = " + longOrder);
+        System.out.println("shortOrder = " + shortOrder);
 
         for (int i = 0; i < array.length; i++) {
             if (i == longOrder) {
@@ -53,5 +40,9 @@ public class Task25_2 {
                 System.out.print(array[i] + " ");
             }
         }
+
+        //1. убрать longest shortest
+        //2. поменять в массиве местами
+        //3. массив обратно в строку перегнать
     }
 }
