@@ -10,10 +10,10 @@ public class Task23 {
         String str2 = null;
 
         for (int i = 0; i < chArray1.length; i++) {
-            if (chArray1[i] == 42) {                    //если попали на символ
+            if (chArray1[i] == '*') {                    //если попали на символ
                 int j = 1;
                 int count = 1;
-                while (chArray1[i+j] == 42) {           //посчитаем сколько у нас подряд символов = 42
+                while (chArray1[i+j] == '*') {           //посчитаем сколько у нас подряд символов = 42
                     j++;
                     count++;                            //счетчик символов подряд
                 }
@@ -30,3 +30,4 @@ public class Task23 {
         System.out.println(str2);
     }
 }
+//вычислить, является ли последней звездой (сократит while)
