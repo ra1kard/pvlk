@@ -12,9 +12,9 @@ public class Task8 {
 
         for (int i = 0; i < chArray.length; i++) {
             if (i == 0) {
-                chArray[i] = 35;
+                chArray[i] = '#';
             } else if (count == n) {
-                chArray[i] = 35;
+                chArray[i] = '#';
                 count = 0;
             }
             count++;
@@ -22,3 +22,5 @@ public class Task8 {
         System.out.println(String.valueOf(chArray));
     }
 }
+//можно сделать проще - учитывать четность/нечетность, код сократится
+//ответ-подсказка была ранее в другой задаче аналогично (делим n и если % = 0, то ставим решетки)
