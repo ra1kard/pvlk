@@ -64,7 +64,7 @@ public class StringLesson {
 //        String str = "";
 //        System.out.println(str.isEmpty());              //true - если строка пуста
 //        System.out.println(str.isBlank());              //true - если строка пуста или содержит только пробелы
-//        String str1 = "Whaths app";
+//        String str1 = "Whats app";
 //        System.out.println(str1.isEmpty());
 //        System.out.println(str1.isBlank());
 //        String str2 = "     ";
