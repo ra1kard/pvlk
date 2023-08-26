@@ -13,14 +13,14 @@ public class Task44_3 {
 
         while (x > 0) {
             int value = x % 10;
-            sumX += value;
             x = x / 10;
+            sumX += value;
         }
 
         while (y > 0) {
             int value = y % 10;
-            sumY += value;
             y = y / 10;
+            sumY += value;
         }
 
         System.out.println((sumX == sumY) ? " родственные" : " не родственные");
