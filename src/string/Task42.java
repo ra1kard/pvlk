@@ -4,48 +4,202 @@ import java.util.Scanner;
 
 public class Task42 {
     public static void main(String[] args) {
-        /*
-        10 + 25 * 2 + 3
-        8 / 2 + 2
-        50 /10 + 2 ** 2 + 6 * 6 - 30
-         */
-        //3 + 3 * 3 = 18 (это пример когда по порядку идет вычисление, что неверно)
-        //3 + 3 * 3 = 12 (это пример когда математически вычисляется сначала умножение затем сложение)
-        //int value = 3 + 3 * 3; System.out.println(value);
-
         Scanner console = new Scanner(System.in);
         String str = console.nextLine();
+        int indexSymbol;
+        int indexLeft = 0;
+        int indexRight = 0;
+        String strLeft = "";
+        String strRight = "";
+        int count = 0;
+        int rsl = 0;
 
+        /**
+         * удалим пробелы
+         */
         str = str.replace(" ", "");
-        System.out.println("строка: удалим все пробелы: " + str);
+        System.out.println(str + " - вывод без пробелов");
 
-        char[] chars = str.toCharArray();
-        System.out.print("символы: создадим массив из оставшихся символов: ");
-        for (int i = 0; i < chars.length; i++) {
-            System.out.print(chars[i]);
-        };
+        /**
+         * определяем есть ли в строке степень и считаем рез-т
+         */
+        while (str.contains("**")) {
+            indexSymbol = str.indexOf("**");   //определим номер символа в строке
+            System.out.println("найдем indexSymbol '**' = " + indexSymbol);
 
-        //вычислить только цифры
-        //вычислить только знаки
+            //найдем левое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol-1-count >= 0
+                    && str.charAt(indexSymbol-1-count) >= '0'
+                    && str.charAt(indexSymbol-1-count) <= '9') {
+                strLeft = str.charAt(indexSymbol-1-count) + strLeft;
+                indexLeft = indexSymbol-1-count;
+                count++;
+            }
+            count = 0;
 
-        char ch0 = chars[0];
-        char ch1 = chars[1];
-        char ch2 = chars[2];
+            //найдем правое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol+2+count <= str.length()-1
+                    && str.charAt(indexSymbol+2+count) >= '0'
+                    && str.charAt(indexSymbol+2+count) <= '9') {
+                strRight += str.charAt(indexSymbol+2+count);
+                indexRight = indexSymbol+2+count;
+                count++;
+            }
+            for (int i = 0; i < Integer.parseInt(strRight); i++) {
+                if (rsl == 0) {
+                    rsl = Integer.parseInt(strLeft);
+                } else {
+                    rsl *= Integer.parseInt(strLeft);
+                }
+            }
+            count = 0;
+            strLeft = "";
+            strRight = "";
 
-        System.out.println();
-        System.out.println("ssssssadsdasdasdasd");
-        System.out.println(Character.getNumericValue(ch0));
-        System.out.println(Character.getNumericValue(ch1));
-        System.out.println("sad = " + ch1 + " = sad");
-        System.out.println(Character.getNumericValue(ch2));
+            //итоговую строку перепишем с учетом возведения в степень
+            str = (str.substring(0, indexLeft)) + rsl + str.substring(indexRight+1);
+            System.out.println(str + " - итог после возведения в степень");
+        }
 
-        int value = Integer.parseInt(Character.getNumericValue(ch0) + "2" + Character.valueOf(ch1) + Character.getNumericValue(ch2));
-        //int value = Integer.parseInt(Character.getNumericValue(ch0) + "2" + Character.valueOf(ch1) + Character.getNumericValue(ch2));
+        /**
+         * определяем есть ли в строке умножение и считаем рез-т
+         */
+        while (str.contains("*")) {
+            indexSymbol = str.indexOf("*");   //определим номер символа в строке
+            System.out.println("найдем indexSymbol '*' = " + indexSymbol);
 
-        System.out.println();
-        System.out.print(value);
+            //найдем левое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol-1-count >= 0
+                    && str.charAt(indexSymbol-1-count) >= '0'
+                    && str.charAt(indexSymbol-1-count) <= '9') {
+                strLeft = str.charAt(indexSymbol-1-count) + strLeft;
+                indexLeft = indexSymbol-1-count;
+                count++;
+            }
+            count = 0;
 
-        //1. почему не удалось решить с помощью eval, что я там не то выбирал??
-        //2. обратную польскую запись надо курить
+            //найдем правое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol+1+count <= str.length()-1
+                    && str.charAt(indexSymbol+1+count) >= '0'
+                    && str.charAt(indexSymbol+1+count) <= '9') {
+                strRight += str.charAt(indexSymbol+1+count);
+                indexRight = indexSymbol+1+count;
+                count++;
+            }
+            rsl = Integer.parseInt(strLeft) * Integer.parseInt(strRight);
+            count = 0;
+            strLeft = "";
+            strRight = "";
+
+            //итоговую строку перепишем с учетом умножения
+            str = (str.substring(0, indexLeft)) + rsl + str.substring(indexRight+1);
+            System.out.println(str + " - итог после умножения");
+        }
+
+        /**
+         * определяем есть ли в строке деление и считаем рез-т
+         */
+        while (str.contains("/")) {
+            indexSymbol = str.indexOf("/");   //определим номер символа в строке
+            System.out.println("найдем indexSymbol '/' = " + indexSymbol);
+
+            //найдем левое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol-1-count >= 0
+                    && str.charAt(indexSymbol-1-count) >= '0'
+                    && str.charAt(indexSymbol-1-count) <= '9') {
+                strLeft = str.charAt(indexSymbol-1-count) + strLeft;
+                indexLeft = indexSymbol-1-count;
+                count++;
+            }
+            count = 0;
+
+            //найдем правое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol+1+count <= str.length()-1
+                    && str.charAt(indexSymbol+1+count) >= '0'
+                    && str.charAt(indexSymbol+1+count) <= '9') {
+                strRight += str.charAt(indexSymbol+1+count);
+                indexRight = indexSymbol+1+count;
+                count++;
+            }
+            rsl = Integer.parseInt(strLeft) / Integer.parseInt(strRight);
+            count = 0;
+            strLeft = "";
+            strRight = "";
+
+            //итоговую строку перепишем с учетом деления
+            str = (str.substring(0, indexLeft)) + rsl + str.substring(indexRight+1);
+            System.out.println(str + " - итог после деления");
+        }
+
+        /**
+         * определяем есть ли в строке сумма и считаем рез-т
+         */
+        while (str.contains("+")) {
+            indexSymbol = str.indexOf("+");   //определим номер символа в строке
+            System.out.println("найдем indexSymbol '+' = " + indexSymbol);
+
+            //найдем левое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol-1-count >= 0
+                    && str.charAt(indexSymbol-1-count) >= '0'
+                    && str.charAt(indexSymbol-1-count) <= '9') {
+                strLeft = str.charAt(indexSymbol-1-count) + strLeft;
+                indexLeft = indexSymbol-1-count;
+                count++;
+            }
+            count = 0;
+
+            //найдем правое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol+1+count <= str.length()-1
+                    && str.charAt(indexSymbol+1+count) >= '0'
+                    && str.charAt(indexSymbol+1+count) <= '9') {
+                strRight += str.charAt(indexSymbol+1+count);
+                indexRight = indexSymbol+1+count;
+                count++;
+            }
+            rsl = Integer.parseInt(strLeft) + Integer.parseInt(strRight);
+            count = 0;
+            strLeft = "";
+            strRight = "";
+
+            //итоговую строку перепишем с учетом сложения
+            str = (str.substring(0, indexLeft)) + rsl + str.substring(indexRight+1);
+            System.out.println(str + " - итог после сложения");
+        }
+
+        /**
+         * определяем есть ли в строке вычитание и считаем рез-т
+         */
+        while (str.contains("-") && str.indexOf("-") != 0) {
+            indexSymbol = str.indexOf("-");   //определим номер символа в строке
+            System.out.println("найдем indexSymbol '-' = " + indexSymbol);
+
+            //найдем левое число полностью (оно мб как "1", так и "23")
+            while (indexSymbol-1-count >= 0
+                    && str.charAt(indexSymbol-1-count) >= '0'
+                    && str.charAt(indexSymbol-1-count) <= '9') {
+                strLeft = str.charAt(indexSymbol-1-count) + strLeft;
+                indexLeft = indexSymbol-1-count;
+                count++;
+            }
+            count = 0;
+
+            //найдем правое число полностью (оно мб как "1", так и "23", так и "456")
+            while (indexSymbol+1+count <= str.length()-1
+                    && str.charAt(indexSymbol+1+count) >= '0'
+                    && str.charAt(indexSymbol+1+count) <= '9') {
+                strRight += str.charAt(indexSymbol+1+count);
+                indexRight = indexSymbol+1+count;
+                count++;
+            }
+            rsl = Integer.parseInt(strLeft) - Integer.parseInt(strRight);
+            count = 0;
+            strLeft = "";
+            strRight = "";
+
+            //итоговую строку перепишем с учетом вычитания
+            str = (str.substring(0, indexLeft)) + rsl + str.substring(indexRight+1);
+            System.out.println(str + " - итог после вычитания");
+        }
     }
 }
+//конечно, если вынести бы все в отдельные методы было бы красиво совсем, однако я понимаю - это позже
