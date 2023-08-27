@@ -3,7 +3,7 @@ package string;
 public class Task25_2 {
     public static void main(String[] args) {
         //String str = "Какой хороший день";
-        String str = "а бб вв г";
+        String str = "а бб в г д";
         //String str = "привет мир";
         //String str = "Завтра будет день теплее чем был сегодня";
         System.out.println(str);
@@ -41,8 +41,8 @@ public class Task25_2 {
             }
         }
 
-        //1. убрать longest shortest
-        //2. поменять в массиве местами
-        //3. массив обратно в строку перегнать
+        // 1. убрать longest shortest
+        // 2. поменять в массиве местами
+        // 3. массив обратно в строку перегнать
     }
 }
