@@ -2,7 +2,7 @@ package arrayList;
 
 import java.util.ArrayList;
 
-public class Test2 {
+public class _Test2 {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
         list.add(10);
