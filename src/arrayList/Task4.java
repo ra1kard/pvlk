@@ -5,17 +5,21 @@ import java.util.List;
 
 public class Task4 {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>(List.of(10, 200, 30, 1, 2));
-        int maxOrder = 0;
+        ArrayList<Integer> list = new ArrayList<>(List.of(100, 10, 200, 30, 1));
+        int maxIndex = 0;
 
-        for (int i = 0; i < list.size()-1; i++) {
+        for (int i = 0; i < list.size(); i++) {
             if (list.get(i) >= 10 && list.get(i) <= 99) {
-                maxOrder = list.get(i+1) > list.get(maxOrder) ? i+1 : maxOrder;
-                System.out.println("хха");
+                maxIndex = i;
+                break;
             }
         }
-        System.out.println("Максимальное двухзначное число - " + list.get(maxOrder));
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) >= 10 && list.get(i) <= 99) {
+                maxIndex = list.get(i) > list.get(maxIndex) ? i : maxIndex;
+            }
+        }
+        System.out.println("Максимальное двухзначное число - " + list.get(maxIndex));
     }
 }
-//по старой схеме не выходит, т.к. мы должны сравнивать из списка только два двухзначных числа
-//тут можно по идее можно удалить все не двухзначные и потом сравнить оставшиеся
