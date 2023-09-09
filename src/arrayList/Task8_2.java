@@ -14,7 +14,7 @@ public class Task8_2 {
         boolean available = false;
 
         for (String s : list) {
-            if (str.equalsIgnoreCase(s)) {
+            if (str.equalsIgnoreCase(s)) {      //правильнее что с чем сравнивать? или без разницы?
                 available = true;
                 break;
             }
