@@ -9,9 +9,9 @@ public class Task5 {
         int maxOrder = 0;
         int minOrder = 0;
 
-        for (int i = 0; i < list.size()-1; i++) {
-            maxOrder = list.get(i+1) > list.get(maxOrder) ? i+1 : maxOrder;
-            minOrder = list.get(i+1) <= list.get(minOrder) ? i+1 : minOrder;
+        for (int i = 0; i < list.size(); i++) {
+            maxOrder = list.get(i) > list.get(maxOrder) ? i : maxOrder;
+            minOrder = list.get(i) <= list.get(minOrder) ? i : minOrder;
         }
 
         System.out.println("Номер максимального элемента: " + maxOrder);
