@@ -13,18 +13,15 @@ public class Task10 {
          */
         ArrayList<String> list = new ArrayList<>(List.of("Молоко", "Сметана", "Хлеб", "Оладьи", "Омлет"));
         Scanner console = new Scanner(System.in);
-        String strUser = console.nextLine();
-        strUser = strUser.toLowerCase();
+        String strUser = console.nextLine().toLowerCase();
         int count = 0;
 
         for (String s : list) {
             s = s.toLowerCase();
-            if (s.contains(strUser)) {              //заходим в слово, если там встречается наша буква
-                char[] chars = s.toCharArray();
-                for (char aChar : chars) {
-                    if (aChar == strUser.charAt(0)) {
-                        count++;
-                    }
+            char[] chars = s.toCharArray();
+            for (char aChar : chars) {
+                if (aChar == strUser.charAt(0)) {
+                    count++;
                 }
             }
         }
