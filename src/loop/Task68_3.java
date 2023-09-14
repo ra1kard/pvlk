@@ -13,9 +13,7 @@ public class Task68_3 {
         while (i > 0) {
             value = i % 10;
             i = i / 10;
-            if (value != 0) {
-                rsl += value * value * value;
-            }
+            rsl += value * value * value;
         }
 
         System.out.println((x == rsl) ? "Число Армстронга" : "Не число Армстронга");
