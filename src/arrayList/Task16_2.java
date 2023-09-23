@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Task16 {
+public class Task16_2 {
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<>(List.of(
                 "Toyota 10", "Nissan 3", "BMW 7",
@@ -14,8 +14,8 @@ public class Task16 {
         int rsl = 0;
 
         for (String s : list) {
-            if (s.contains(strUser)) {
-                String[] arrayString = s.split(" ");
+            String[] arrayString = s.split(" ");
+            if (arrayString[0].equalsIgnoreCase(strUser)) {
                 rsl += Integer.parseInt(arrayString[1]);
             }
         }
@@ -23,4 +23,3 @@ public class Task16 {
         System.out.println(rsl);
     }
 }
-//лучше сначала split, потом преобразовываем
