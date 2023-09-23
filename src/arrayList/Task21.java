@@ -11,15 +11,16 @@ public class Task21 {
         ArrayList<Integer> list = new ArrayList<>(List.of(10, 20, 30, 40, 50, 60, 20));
         Scanner console = new Scanner(System.in);
         int userValue = console.nextInt();
+        boolean isContains = false;
 
-        if (list.contains(userValue)) {
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i) == userValue) {
-                    System.out.println(i);
-                    break;
-                }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == userValue) {
+                System.out.println(i);
+                isContains = true;
+                break;
             }
-        } else {
+        }
+        if (!isContains) {
             System.out.println(-1);
         }
     }
