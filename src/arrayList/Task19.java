@@ -9,9 +9,9 @@ public class Task19 {
         //ArrayList<Integer> list = new ArrayList<>(List.of(15, 27, 9, 0, 14, 6, 28, -7, 0));
         //ArrayList<Integer> list = new ArrayList<>(List.of(1500, 9600, 7000, 14142));
         //ArrayList<Integer> list = new ArrayList<>(List.of(9100, 990));
-        int countFour = 0;
 
         for (int i = 0; i < list.size(); i++) {
+            int countFour = 0;
             int x = list.get(i);
             while (x > 0) {
                 x = x / 10;
@@ -21,7 +21,6 @@ public class Task19 {
                 list.remove(i);
                 i--;
             }
-            countFour = 0;
         }
 
         System.out.println(list);
