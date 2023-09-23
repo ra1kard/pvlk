@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Task15 {
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>(List.of("Bob D", "Zoz", "Ror"));
+        ArrayList<String> list = new ArrayList<>(List.of("vob D", "Zoz", "ror"));
         boolean smallWords = false;
 
         for (String str : list) {
