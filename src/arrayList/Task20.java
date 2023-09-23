@@ -29,3 +29,4 @@ public class Task20 {
         System.out.println(list);
     }
 }
+//лучше использоваьб отдельную коллекция для рез-та
