@@ -11,15 +11,13 @@ public class Task17 {
         int rsl = 0;
         int countNull = 0;
 
-        if (list.contains(0)) {
-            for (int l : list) {
-                if (l == 0) {
-                    countNull++;
-                } else if (countNull == 1) {
-                    rsl += l;
-                } else if (countNull > 1) {
-                    break;
-                }
+        for (int e : list) {
+            if (e == 0) {
+                countNull++;
+            } else if (countNull == 1) {
+                rsl += e;
+            } else if (countNull > 1) {
+                break;
             }
         }
 
