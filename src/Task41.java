@@ -1,11 +1,16 @@
 public class Task41 {
     public static void main(String[] args) {
-        int number = 123;
+        int number = 112;
+        int count = 0;
         while (number > 0) {                //учитываем целое число
             int digit = number % 10;        //получаем остаток
             System.out.println(digit);      //и выводим остаток
             number = number / 10;           //получаем целое число, без остатка
+
+            count++;                        //доп счетчик чтобы посчитать кол-во цифр в числе
         }
+
+        System.out.println("ск цифр две или одна или три? = " + count);
     }
 }
 
