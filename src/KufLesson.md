@@ -41,3 +41,22 @@ class Main {
     }
 }
 ```
+
+### Получение цифр из числа - остаток, целое
+
+```java
+class Main {
+    public static void main(String[] args) {
+        int number = 112;
+        int count = 0;
+        while (number > 0) {                //учитываем целое число
+            int digit = number % 10;        //получаем остаток
+            number = number / 10;           //получаем целое число, без остатка
+
+            count++;                        //доп счетчик чтобы посчитать кол-во цифр в числе
+        }
+
+        System.out.println("ск цифр две или одна или три? = " + count);
+    }
+}
+```
