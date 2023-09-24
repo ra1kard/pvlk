@@ -13,6 +13,8 @@ public class Task42 {
         String strRight = "";
         int count = 0;
         int rsl = 0;
+        int orderLastMinus = 0;
+        int countMinus = 0;
 
         /**
          * удалим пробелы
@@ -169,8 +171,20 @@ public class Task42 {
         /**
          * определяем есть ли в строке вычитание и считаем рез-т
          */
-        while (str.contains("-") && str.indexOf("-") != 0) {
-            indexSymbol = str.indexOf("-");   //определим номер символа в строке
+        while (str.contains("-")) {           //реализовать возможность -3-5
+
+            //посмотрим сколько символов "-" у нас всего и зафиксируем последний индекс (для случаев: -3-5)
+            for (int i = 0; i < str.length(); i++) {
+                char ch = str.charAt(i);
+                if (ch == '-') {
+                    orderLastMinus = i;
+                    countMinus++;
+                }
+            }
+            System.out.println("orderLastMinus = " + orderLastMinus);
+            System.out.println("countMinus = " + countMinus);
+
+            indexSymbol = orderLastMinus;   //определим номер символа в строке
             System.out.println("найдем indexSymbol '-' = " + indexSymbol);
 
             //найдем левое число полностью (оно мб как "1", так и "23")
@@ -199,7 +213,8 @@ public class Task42 {
             //итоговую строку перепишем с учетом вычитания
             str = (str.substring(0, indexLeft)) + rsl + str.substring(indexRight+1);
             System.out.println(str + " - итог после вычитания");
+
+            //если цифра осталась одна - то выходим из цикла, у нас отрицание
         }
     }
 }
-//конечно, если вынести бы все в отдельные методы было бы красиво совсем, однако я понимаю - это позже
