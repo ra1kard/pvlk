@@ -18,6 +18,5 @@ public class _Test1 {
         System.out.println(list.size());
         System.out.println(list.get(3));
         System.out.println(list.contains(-8));
-        System.out.println();
     }
 }
