@@ -2,7 +2,7 @@ package string;
 
 import java.util.Scanner;
 
-public class Task42_2 {
+public class Task42_3 {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         String str = console.nextLine();
@@ -169,7 +169,7 @@ public class Task42_2 {
         /**
          * определяем есть ли в строке вычитание и считаем рез-т
          */
-        while (str.contains("-") && str.contains(" ")) {
+        while (str.contains("-")) {        // реализовать возможность 3-5, -3-5
             indexSymbol = str.indexOf("-");   //определим номер символа в строке
             System.out.println("найдем indexSymbol '-' = " + indexSymbol);
 
@@ -202,4 +202,4 @@ public class Task42_2 {
         }
     }
 }
-// реализовать возможность -3-5
+// реализовать возможность -3-5 (потом используя коллекции будет проще
