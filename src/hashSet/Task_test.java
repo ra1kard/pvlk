@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Task_test {
     public static void main(String[] args) {
-        HashSet<String> states = new HashSet<String>();
+        HashSet<String> states = new HashSet<>();
 
         // добавим в список ряд элементов
         states.add("Germany");
@@ -31,6 +31,7 @@ public class Task_test {
     проверка наличия элемента: contains()
     очистка коллекции: clear()
     получение размера коллекции: size()
+    проверка на пустоту коллекции: isEmpty()
 
 HashSet реализован как хэш-таблица,
 - где элементы хранятся в виде ключей
