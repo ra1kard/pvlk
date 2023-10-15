@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class Task1 {
     public static void main(String[] args) {
-        HashSet<String> food = new HashSet<String>();
+        HashSet<String> food = new HashSet<>();
 
         // добавим в список ряд элементов
         food.add("арбуз");
@@ -21,9 +21,13 @@ public class Task1 {
         //вывод всей коллекции в строку
         System.out.println(food);
 
+        //видно, что вставится в рандомное место
+        food.add("fri");
+
         //вывод содержимого, где каждый элемент с новой строки - видно, что порядок изменился
         for (String s : food) {
-            System.out.println(s);
+            System.out.print(s + " ");
         }
+
     }
 }
