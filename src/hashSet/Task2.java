@@ -9,11 +9,11 @@ public class Task2 {
     public static void main(String[] args) {
 
         //необходимо отфильтровать массив и сформировать коллекцию без дублей
-        HashSet<Integer> numbers = new HashSet<Integer>(Arrays.asList(10, 10, 20, 77, 89, 96, 5, 14, 13, 20, 17, 10));
-        HashSet<Integer> numbers2 = new HashSet<Integer>();
-        System.out.println(numbers);        // ! тут уже видно, что нет дублей
+        HashSet<Integer> numbers = new HashSet<>(Arrays.asList(10, 10, 20, 77, 89, 96, 5, 14, 13, 20, 17, 10));
+        HashSet<Integer> numbers2 = new HashSet<>();
+        System.out.println(numbers);        // тут уже видно, что нет дублей
 
-        for (int n : numbers) {             // и это выходит бессмысленное действие?
+        for (int n : numbers) {             // и это выходит бессмысленное действие
             if (!numbers2.contains(n)) {
                 numbers2.add(n);
             }
