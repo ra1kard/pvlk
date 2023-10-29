@@ -8,11 +8,11 @@ public class Task3 {
     public static void main(String[] args) {
         HashMap<Integer, String> map = new HashMap<>();
         Scanner console = new Scanner(System.in);
-        //int n = console.nextInt();    //почему первый элемент не заполняется не пойму, буд-то сливается со след чтением строки
+        int n = console.nextInt();
 
-        for (int i = 1; i < 5; i++) {   //тут вместо 5 должен быть n
-            String str = console.nextLine();
-            map.put(i, str);
+        console = new Scanner(System.in);       //проинициализирован еще раз, т.к. есть баг в Сканнере
+        for (int i = 1; i < n; i++) {
+            map.put(i, console.nextLine());
         }
 
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
