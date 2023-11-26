@@ -15,13 +15,9 @@ public class Task25_3 {
         String[] array = str.split(" ");
 
         // 1. убрать longest shortest
-        for (int i = 0; i < array.length; i++) {
-            if (i < array.length - 1) {
-                longOrder = array[i+1].length() > array[longOrder].length() ? i+1 : longOrder;
-            }
-            if (i < array.length - 1) {
-                shortOrder = array[i+1].length() <= array[shortOrder].length() ? i+1 : shortOrder;
-            }
+        for (int i = 0; i < array.length - 1; i++) {
+            longOrder = array[i+1].length() > array[longOrder].length() ? i+1 : longOrder;
+            shortOrder = array[i+1].length() <= array[shortOrder].length() ? i+1 : shortOrder;
         }
         System.out.println(longOrder + " - longOrder");
         System.out.println(shortOrder + " - shortOrder");
@@ -55,3 +51,5 @@ public class Task25_3 {
         System.out.println(str);
     }
 }
+//1. поменять местами без цикла
+//2. массив перегнать в строку есть встроенное решение - метод join
