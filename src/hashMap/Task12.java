@@ -29,7 +29,6 @@ public class Task12 {
         for (String s : map.keySet()) {
             if (map.get(s) != min && map.get(s) != max) {
                 System.out.println(s);
-                break;
             }
         }
     }
