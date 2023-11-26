@@ -10,11 +10,7 @@ public class Task8_2 {
         String str = console.nextLine();
         int count = 0;
 
-        //уберем запятые
-        while (str.contains(",")) {
-            int index = str.indexOf(",");
-            str = str.substring(0, index) + str.substring(index+1);
-        }
+        str = str.replace(",", "");
 
         //разобъем по пробелам
         String[] arrayString = str.split(" ");
