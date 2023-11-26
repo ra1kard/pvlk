@@ -25,3 +25,4 @@ public class Task24_2 {
         System.out.println(list2.get(list2.size()-1));
     }
 }
+//лучше сделать через for
