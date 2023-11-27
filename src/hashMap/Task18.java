@@ -56,7 +56,6 @@ public class Task18 {
                 for (int j = 2; j < arrayStr.length; j++) {
                     arrayValues.add(arrayStr[j]);
                 }
-                System.out.println(arrayValues);
                 map.put(arrayStr[0], arrayValues);
             }
 
