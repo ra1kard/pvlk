@@ -17,12 +17,12 @@ public class Task19_2 {
         System.out.println();
 
         String[] arrayStr = str.split(", ");
-        for (int i = 0; i < arrayStr.length; i++) {
-            System.out.println(arrayStr[i]);
+        for (String s : arrayStr) {
+            System.out.println(s);
         }
 
-        for (int i = 0; i < arrayStr.length; i++) {
-            String[] arrayStrTemp = arrayStr[i].split(" : ");
+        for (String s : arrayStr) {
+            String[] arrayStrTemp = s.split(" : ");
             map.put(arrayStrTemp[0], arrayStrTemp[1]);
         }
 
