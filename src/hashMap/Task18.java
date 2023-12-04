@@ -28,21 +28,21 @@ public class Task18 {
 
             //1. выполнить проверку
             for (int j = 0; j < arrayStr[0].length(); j++) {
-                if (!(arrayStr[0].charAt(j) >= 97 && arrayStr[0].charAt(j) <= 122)) {
+                if (!(arrayStr[0].charAt(j) >= 'a' && arrayStr[0].charAt(j) <= 'z')) {
                     System.out.println("Строка не прошла валидацию: первое слово должно быть английским");
                     strCorrect = false;
                     break;
                 }
             }
-            if (!strCorrect || !(arrayStr[1].charAt(0) == 45)) {
+            if (!(arrayStr[1].charAt(0) == 45)) {
                 System.out.println("Строка не прошла валидацию: не указано тире");
-                strCorrect = false;
                 break;
             }
             int count = 2;
             while (count < arrayStr.length) {
                 for (int k = 0; k < arrayStr[count].length(); k++) {
                     if (!strCorrect || !(ruSymbols.contains(arrayStr[count].charAt(k)))) {
+                    //if (!strCorrect || !(arrayStr[0].charAt(k) >= 'а' && arrayStr[0].charAt(k) <= 'я')) {
                         System.out.println("Строка не прошла валидацию: третье и последующие слова должно быть русскими");
                         strCorrect = false;
                         break;
@@ -69,3 +69,6 @@ public class Task18 {
 //1. почему во втором случае   strCorrect = false    is never used не пойму
 //2. как проверить на русские символы? весь инет перерыл, получается как с англ символами по ascii не получается
 //   сделал втупую указав весь алфавит в hashSet...
+
+//orange - оранжевый, рыжий, апельсин
+//проще взять: пробел тире пробел и сплитовать
