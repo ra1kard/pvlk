@@ -13,7 +13,6 @@ public class Task18_4 {
         console = new Scanner(System.in);       //проинициализируем еще раз
 
         for (int i = 0; i <countInput ; i++) {
-            ArrayList<String> arrayValues = new ArrayList<>();
             System.out.println("Введите строку в формате: engWord - ruWord, ruWord");
             String str = console.nextLine();    //вызовем столько раз, сколько указали ранее
             str = str.toLowerCase();
