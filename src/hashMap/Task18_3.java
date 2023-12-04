@@ -20,7 +20,7 @@ public class Task18_3 {
             str = str.toLowerCase();
             String[] arrayStr = str.split(" ");
 
-            //2. затем первые - положить в key, третий и далее - положить в value текущего ключа
+            //затем нулевой - положить в key, второй и далее - положить в value
             for (int j = 2; j < arrayStr.length; j++) {
                 arrayValues.add(arrayStr[j]);
             }
