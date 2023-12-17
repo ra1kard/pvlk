@@ -42,7 +42,41 @@ class Main {
 }
 ```
 
-### Получение цифр из числа - остаток, целое
+### String в char
+
+```java
+public class StringToArrayExample {
+    public static void main(String[] args) {
+        String str = "Hello, World!";
+
+        // Преобразовать строку в массив символов
+        char[] charArray = str.toCharArray();
+
+        // Распечатать элементы массива
+        for (char c : charArray) {
+            System.out.println(c);
+        }
+    }
+}
+```
+
+### char в String
+
+```java
+class Main {
+    char ch = 'a';
+    String str = new String(new char[]{ch});
+}
+```
+
+```java
+class Main {
+    char[] arr = {'h', 'e', 'l', 'l', 'o'};
+    String str = new String(arr); // hello
+}
+```
+
+## Получение цифр из числа - остаток, целое
 
 ```java
 class Main {
