@@ -1,4 +1,4 @@
-package method;
+package method.examples;
 
 public class This_Example {
     // Инициализация переменной num
