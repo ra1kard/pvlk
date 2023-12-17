@@ -1,6 +1,6 @@
-# Преобразования
+# Заметки
 
-## Из одного типа в другой
+## Преобразования из одного типа в другой
 
 ### char в int
 
@@ -66,6 +66,7 @@ public class StringToArrayExample {
 class Main {
     char ch = 'a';
     String str = new String(new char[]{ch});
+    String str = String.valueOf(ch);            //или так
 }
 ```
 
@@ -91,6 +92,28 @@ class Main {
         }
 
         System.out.println("ск цифр две или одна или три? = " + count);
+    }
+}
+```
+
+## Ввод с клавиатуры
+
+### строка
+```java
+class Main {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        int x = console.nextInt();
+    }
+}
+```
+
+### число 
+```java
+class Main {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        String str = console.nextLine();
     }
 }
 ```
