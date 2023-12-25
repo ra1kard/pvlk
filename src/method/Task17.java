@@ -14,7 +14,7 @@ public class Task17 {
             return false;
         }
         for (int i = 2; i < value; i++) {
-            if ((value % i == 0)) {
+            if (value % i == 0) {
                 return false;
             }
         }
