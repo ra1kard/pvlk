@@ -8,11 +8,10 @@ public class Task4 {
     }
 
     public static int countNumber(int number) {
-        int count = 0;
         char[] chars = Integer.toString(number).toCharArray();
-        for (char ch : chars) {
-            count++;
-        }
-        return count;
+        return chars.length;
     }
+
 }
+
+//можно еще через цикл символов и count, однако это дольше

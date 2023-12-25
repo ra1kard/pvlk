@@ -10,14 +10,12 @@ public class Task6 {
     }
 
     public static boolean palindrom(String str) {
-        boolean rsl = true;
         char[] chars = str.toCharArray();
         for (int i = 0; i < chars.length/2; i++) {
             if (!(chars[i] == chars[chars.length-1-i])) {
-                rsl = false;
-                break;
+                return false;
             }
         }
-        return rsl;
+        return true;
     }
 }

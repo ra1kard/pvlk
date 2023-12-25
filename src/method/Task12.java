@@ -9,21 +9,14 @@ public class Task12 {
 
     public static int myMethod(String str) {
         char[] chars = str.toCharArray();
-        boolean becomeNumber = true;
-        String strNew = null;
+        String strNew = "";
 
         for (char ch : chars) {
             if (!((ch > 48) && (ch <= 57))) {   //если не цифра, добавляем в строку
-                becomeNumber = false;
-                break;
-            } else {
-                if (strNew == null) {
-                    strNew = String.valueOf(ch);
-                } else {
-                    strNew += ch;
-                }
+                return 0;
             }
+            strNew += ch;
         }
-        return (becomeNumber) ? Integer.parseInt(strNew) : 0;
+        return Integer.parseInt(strNew);
     }
 }

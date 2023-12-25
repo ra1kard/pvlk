@@ -11,17 +11,16 @@ public class Task11 {
 
     public static String deleteNumbers(String str) {
         char[] chars = str.toCharArray();
-        String strNew = null;
+        String strNew = "";
         for (char ch : chars) {
-            if (!((ch > 48) && (ch <= 57))) {   //если не цифра, добавляем в строку
-                if (strNew == null) {
+            if (!((ch >= 48) && (ch <= 57))) {   //если не цифра, добавляем в строку
+                if (strNew.isEmpty()) {
                     strNew = String.valueOf(ch);
                 } else {
                     strNew += ch;
                 }
             }
         }
-        assert strNew != null;
         strNew = strNew.replace("  ", " ");
         strNew = strNew.trim();
         return strNew;
