@@ -15,13 +15,13 @@ public class Task15 {
         ArrayList<Integer> list3 = new ArrayList<>();
 
         // 1. пробежаться вычислить уникальные в list1 = 4, 5, 6, 7         //работа с list1 -> listTemp
-        for (int i = 0; i < list1.size(); i++) {
+        for (Integer value : list1) {
             int count = 0;
             for (Integer l1 : list1) {
-                if (list1.get(i).equals(l1)) count++;
+                if (value.equals(l1)) count++;
                 if (count > 1) break;
             }
-            if (count == 1) listTemp.add(list1.get(i));
+            if (count == 1) listTemp.add(value);
         }
         System.out.println(listTemp);
 
@@ -38,13 +38,13 @@ public class Task15 {
 
         // 3. пробежаться вычислить уникальные в list2 = 6, 7, 9            //работа с list2 -> listTemp
         listTemp.clear();
-        for (int i = 0; i < list2.size(); i++) {
+        for (Integer value : list2) {
             int count = 0;
             for (Integer l2 : list2) {
-                if (list2.get(i).equals(l2)) count++;
+                if (value.equals(l2)) count++;
                 if (count > 1) break;
             }
-            if (count == 1) listTemp.add(list2.get(i));
+            if (count == 1) listTemp.add(value);
         }
         System.out.println(listTemp);
 
