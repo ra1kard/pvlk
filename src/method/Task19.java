@@ -11,16 +11,16 @@ public class Task19 {
     }
 
     public static boolean checkArmstrong(int value) {
-        if (value > 0) {
-            String str = String.valueOf(value);
-            char[] array = str.toCharArray();
-            int rsl = 0;
-            for (char c : array) {
-                int num = Character.getNumericValue(c);
-                rsl += Math.pow(num, array.length);
-            }
-            return (value == rsl);
+        if (value <= 0) {
+            return false;
         }
-        return false;
+        String str = String.valueOf(value);
+        char[] array = str.toCharArray();
+        int rsl = 0;
+        for (char c : array) {
+            int num = Character.getNumericValue(c);
+            rsl += Math.pow(num, array.length);
+        }
+        return value == rsl;
     }
 }
