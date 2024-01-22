@@ -54,3 +54,4 @@ public class Person {
     }
 
 }
+//метод move и talk каким ставить лучше модификатором?
