@@ -22,6 +22,10 @@ public class Start {
         System.out.println(bottle.getCount());
         bottle.nulling();
         System.out.println(bottle.getCount());
+        System.out.println();
+
+        Counter ss = new Counter(-2);
+        System.out.println(ss.getCount());
     }
 
 }
