@@ -1,7 +1,6 @@
 package classes.task4;
 
 public class Organisation {
-
     private PostalAddress postalAddress;
     private PhysicalAddress physicalAddress;
     private String name;
@@ -58,5 +57,4 @@ public class Organisation {
                 organisation.getPhysicalAddress().getIndex() + ", " +
                 organisation.getPhysicalAddress().getStreet());
     }
-
 }
