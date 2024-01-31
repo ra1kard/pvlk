@@ -6,7 +6,7 @@ public class Watch {
     private int sec;
 
     Watch() {
-        new Watch(0, 0, 0);     // так можно ???
+        new Watch(0, 0, 0);     // так можно ???????
     }
 
     Watch(int hours, int min, int sec) {
@@ -37,7 +37,7 @@ public class Watch {
     }
 
     public void timeGo() throws InterruptedException {
-        final int maxHours = 23;
+        final int maxHours = 23;                //стоит в поля класса их доб или тут ост ???????
         final int maxMin = 59;
         final int maxSec = 59;
         while (true) {
