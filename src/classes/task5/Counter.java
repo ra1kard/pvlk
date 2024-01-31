@@ -20,24 +20,26 @@ public class Counter {
     }
 
     public void increment() {
-        this.count++;
+        increment(1);
     }
 
     public void increment(int number) {
-        if (this.count + number <= maxCount) {
-            this.count = this.count + number;
+        this.count = this.count + number;
+
+        if (maxCount != 0 && this.count > maxCount) {
+            this.count = maxCount;
         }
     }
 
     public void decrement() {
-        if (count > 0) {
-            this.count--;
-        }
+        decrement(1);
     }
 
     public void decrement(int number) {
-        if (this.count - number > 0) {
-            this.count = this.count - number;
+        this.count = this.count - number;
+
+        if (maxCount != 0 && this.count < 0) {
+            this.count = 0;
         }
     }
 
