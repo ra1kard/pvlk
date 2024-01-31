@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Start {
 
     public static void main(String[] args) {
-        Grass grassArea1 = new Grass(50);
+        Grass grassArea1 = new Grass(300);
         Grass grassArea2 = new Grass(30);
         Herbivore rabbit = new Herbivore("Rabbit", 4, 10);    //зайцы 4кг
         Herbivore panda = new Herbivore("Panda", 90, 40);    //панды 70-120кг
