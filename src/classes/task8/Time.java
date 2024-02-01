@@ -1,15 +1,15 @@
 package classes.task8;
 
-public class Watch {
+public class Time {
     private int hour;
     private int min;
     private int sec;
 
-    Watch() {
-        new Watch(0, 0, 0);     // так можно ???????
+    Time() {
+        new Time(0, 0, 0);     // так можно ???????
     }
 
-    Watch(int hours, int min, int sec) {
+    Time(int hours, int min, int sec) {
         this.hour = hours;
         this.min = min;
         this.sec = sec;
@@ -18,6 +18,7 @@ public class Watch {
     public int getHour() {
         return hour;
     }
+
     public void setHour(int hour) {
         this.hour = hour;
     }
@@ -25,6 +26,7 @@ public class Watch {
     public int getMin() {
         return min;
     }
+
     public void setMin(int min) {
         this.min = min;
     }
@@ -32,6 +34,7 @@ public class Watch {
     public int getSec() {
         return sec;
     }
+
     public void setSec(int sec) {
         this.sec = sec;
     }
@@ -47,7 +50,7 @@ public class Watch {
                 setHour(0);
                 setMin(0);
                 setSec(0);
-            } else if (getMin() == maxMin && getSec() == maxSec ) {
+            } else if (getMin() == maxMin && getSec() == maxSec) {
                 setMin(0);
                 setSec(0);
                 addHours();
@@ -94,6 +97,34 @@ public class Watch {
         } else {
             return Integer.toString(sec);
         }
+    }
+
+    public boolean isBefore(Time timeCurrent, Time time2) {
+        if (timeCurrent.hour < time2.hour) {
+            return true;
+        } else if (timeCurrent.min < time2.min) {
+            return true;
+        } else if (timeCurrent.sec < time2.sec) {
+            return true;
+        } else
+            return false;
+    }
+
+    public boolean isAfter(Time timeCurrent, Time time2) {
+        if (timeCurrent.hour > time2.hour) {
+            return true;
+        } else if (timeCurrent.min > time2.min) {
+            return true;
+        } else if (timeCurrent.sec > time2.sec) {
+            return true;
+        } else
+            return false;
+    }
+
+    public boolean isSame(Time timeCurrent, Time time2) {
+        return timeCurrent.hour == time2.hour
+                && timeCurrent.min == time2.min
+                && timeCurrent.sec == time2.sec;
     }
 
 }

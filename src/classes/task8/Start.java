@@ -3,12 +3,17 @@ package classes.task8;
 public class Start {
 
     public static void main(String[] args) throws InterruptedException {
-        Watch watchNY = new Watch();
-        Watch watchMos = new Watch(22, 58, 40);
-        watchMos.addHours();
-        watchMos.addMin();
-        watchMos.addSec();
-        watchMos.timeGo();
+        Time timeNY = new Time();
+        Time timeMos = new Time(22, 58, 30);
+        Time timeLon = new Time(22, 58, 30);
+        timeMos.addHours();
+        timeMos.addMin();
+        timeMos.addSec();
+        timeMos.timeGo();
+
+        System.out.println(timeMos.isBefore(timeMos, timeLon));
+        System.out.println(timeMos.isAfter(timeMos, timeLon));
+        System.out.println(timeMos.isSame(timeMos, timeLon));
     }
 
 }
