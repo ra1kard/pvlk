@@ -18,7 +18,6 @@ public class Time {
     public int getHour() {
         return hour;
     }
-
     public void setHour(int hour) {
         this.hour = hour;
     }
@@ -26,7 +25,6 @@ public class Time {
     public int getMin() {
         return min;
     }
-
     public void setMin(int min) {
         this.min = min;
     }
@@ -34,7 +32,6 @@ public class Time {
     public int getSec() {
         return sec;
     }
-
     public void setSec(int sec) {
         this.sec = sec;
     }
@@ -45,7 +42,7 @@ public class Time {
         final int maxSec = 59;
         while (true) {
             System.out.println("Текущее время: " + printHour() + ":" + printMin() + ":" + printSec());
-            Thread.sleep(200);
+            Thread.sleep(100);
             if (getHour() == maxHours && getMin() == maxMin && getSec() == maxSec) {
                 setHour(0);
                 setMin(0);
