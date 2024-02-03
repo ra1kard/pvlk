@@ -29,6 +29,8 @@ public class Worker {
             }
         }
         this.tasks.remove(index);
+        System.out.println("Задача " + task.getNumber() + " удалена из списка задач работника");
+        System.out.println();
     }
 
     public void printWorkerTasks(String name) {
