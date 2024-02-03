@@ -1,4 +1,4 @@
-package classes.task8;
+package classes.task8and9;
 
 public class Time {
     private int hour;
