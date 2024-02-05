@@ -25,23 +25,24 @@ public class Start {
         vasiliy.setTasks(task1004);
         vasiliy.setTasks(task1005);
 
-        //вывод всех задач сотрудников
-        for (Worker worker : workers) {
+        for (Worker worker : workers) {                         //вывод всех задач сотрудников
             worker.printWorkerTasks(worker.getName());
         }
 
-        //вывод работника с самым большим кол-вом сложных задач
-        workers.get(0).printMostCountDifficultTask(workers);    //не понял как мне иначе/лучше отсюда вызвать метод?
+        workers.get(0).printMostCountDifficultTask(workers);    //вывод работника с самым большим кол-вом сложных задач
+                                                                //не понял как мне иначе/лучше отсюда вызвать метод?
                                                                 //как выше не мог сделать iter, т.к. надо спис передать
 
-        vasiliy.deleteTask(task1004);
-        //вывод всех задач сотрудников
-        for (Worker worker : workers) {
+        /*vasiliy.deleteTask(task1004);                           //удалим
+
+        for (Worker worker : workers) {                         //вывод всех задач сотрудников
             worker.printWorkerTasks(worker.getName());
         }
 
-        //вывод работника с самым большим кол-вом сложных задач
-        workers.get(0).printMostCountDifficultTask(workers);
+        workers.get(0).printMostCountDifficultTask(workers);    //вывод работника с самым большим кол-вом сложных задач*/
+
+
     }
 
 }
+

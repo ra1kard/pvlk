@@ -3,7 +3,7 @@ package classes.task10;
 public class Task {
     private int difficult;          //сложность задачи  1 легкий, 2 средний, 3 сложный
     private String description;     //описание задачи
-    private final int number;             //номер задачи
+    private final int number;       //номер задачи
 
     Task(int number, int difficult, String description) {
         this.difficult = difficult;
@@ -29,5 +29,5 @@ public class Task {
         return number;
     }
 
-
 }
+
