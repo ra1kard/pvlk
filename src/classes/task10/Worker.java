@@ -16,24 +16,24 @@ public class Worker {
     public ArrayList<Task> getTasks() {
         return tasks;
     }
-    public void setTasks(Task task) {
+    public void addTasks(Task task) {
         this.tasks.add(task);
     }
 
-    public void deleteTask(Task task) {
-        int index = 0;
+    public void deleteTask(int number) {
+        int index;
         for (int i = 0; i < this.tasks.size(); i++) {
-            if (this.tasks.get(i).getNumber() == task.getNumber()) {
+            if (this.tasks.get(i).getNumber() == number) {
                 index = i;
+                this.tasks.remove(index);
+                System.out.println("Задача " + number + " удалена из списка задач работника");
+                System.out.println();
                 break;
             }
         }
-        this.tasks.remove(index);
-        System.out.println("Задача " + task.getNumber() + " удалена из списка задач работника");
-        System.out.println();
     }
 
-    public void printWorkerTasks(String name) {
+    public void printWorkerTasks() {
         System.out.println(name + " имеет количество задач: " + this.tasks.size());
         for (Task task : this.tasks) {
             System.out.println("сложность: " + task.getDifficult() + ", описание: " + task.getDescription());
