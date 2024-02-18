@@ -117,3 +117,237 @@ class Main {
     }
 }
 ```
+
+## Enum - перечисление
+
+Используется когда нам требуется перечисление.
+
+### Например
+
+Нам надо перечислить типы объектов, допустим: 
+- есть времена года
+- есть типы животных
+
+Если программе требуются времена года:
+1. мы можем создать Enum время года
+2. и там перечислить: весна, лето, осень, зима
+
+Если программе трбуются страны:
+1. мы можем создать Enum страны
+2. и там перечислить: Россия, Беларусь и тд
+
+### Как жили до появления Enum в Java < 1.5 версии:
+
+```java
+public class Test {
+    private static final int DOG = 0;
+    private static final int CAT = 1;
+    private static final int FROG = 2;
+
+    public static void main(String[] args) {
+        int animal = 100;
+        
+        switch (animal) {
+            case DOG:
+                System.out.println("it's a dog");
+                break;
+            case FROG:
+                System.out.println("it's a frog");
+                break;
+            default:
+                System.out.println("it's a animal");
+        }
+    }
+}
+```
+
+Неудобства:
+1. представьте, если переменная хранит 100, что это будет означать?
+    
+- какое же это животное? 
+- возникает НЕОПРЕДЕЛЕННОСТЬ:
+- int animal = 100;
+
+
+2. и вторая проблема с хранением в целом числе какого-то типа:
+    
+- это то, что для того чтобы понять какое животное в переменной
+- нам надо посмотреть вверх класса на поля - НЕУДОБНО
+- если класс большой - проблема остро может ощущаться
+
+
+### Поэтому появился Enum. Что делают теперь:
+
+```java
+public enum Animal {
+    DOG, CAT, FROG
+}
+```
+
+```java
+public enum Season {
+    SUMMER, WINTER, AUTUMN, SPRING
+}
+```
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        Animal animal = Animal.CAT;
+
+        switch (animal) {
+            case DOG:
+                System.out.println("it's a dog!");
+                break;
+            case CAT:
+                System.out.println("it's a cat!");
+                break;
+            case FROG:
+                System.out.println("it's a frog!");
+                break;
+        }
+
+        Season season = Season.SUMMER;
+
+        switch (season) {
+            case SUMMER:
+                System.out.println("Тепло");
+                break;
+            case WINTER:
+                System.out.println("Холодно");
+                break;
+        }
+    }
+}
+```
+
+Вывод будет следующим:
+```java
+it's a cat!
+Тепло
+```
+
+### Преимущества Enum 
+
+1. проблему №1 - Enum наглядно решил:
+
+    теперь программа может использовать только то, что перечислено в Enum;
+
+2. проблема №2 - также решена, сразу понятно из названия где кошка
+
+
+При создании:
+- выбираем имя Enum, точка и выбираем тип Enum 
+- и ссылаемся на переменную animal
+
+### Наследование в Enum отличается от классов
+
+Все классы насладуются от объекта Object:
+- Object -> Test 
+
+У Enum в отличие от класса наследование идет по-другому:
+- Object -> Enum -> Animal
+- Object -> Enum -> Season
+
+Как только мы написали перечисление:
+```java
+public enum Season {
+    SUMMER, WINTER, AUTUMN, SPRING
+}
+```
+Java сама создает объекты этого Enum
+
+Enum - по сути как класс, в нем тоже могут быть методы и тп
+
+То есть у нас:
+```java
+public class Test {
+    public static void main(Sting[] args) {
+       Season season = Season.SUMMER;
+    }
+}
+```
+- объект в переменной season (лето)
+- является объектом класса Season
+
+
+### Создание Enum
+
+Если в Enum будет только перечисление, тогда ; в конце можно не ставить
+```java
+public enum Season {
+    SUMMER, WINTER, AUTUMN, SPRING
+}
+```
+
+Если в Enum что-то еще, тогда ; нам необходимо поставить
+
+```java
+import classes.task11enum.Animal;
+
+public enum Season {
+   SUMMER, WINTER, AUTUMN, SPRING;
+
+   private Animal() {
+       
+   }
+}
+```
+
+### Получение индекса Enum (порядка среди перечислений):
+
+Есть ситуации когда мы хотим получить индекс нашего Enum
+```java
+public enum Season {
+   SUMMER, WINTER, AUTUMN, SPRING;
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Season winter = Season.WINTER;
+        System.out.println(winter.ordinal()); //ordinal
+    }
+}
+```
+Вывод будет:
+```java
+1
+```
+
+### Вывод имени Enum
+Допустим хотим вывести имя как оно задекларировано в перечислении
+```java
+public enum Season {
+   SUMMER, WINTER, AUTUMN, SPRING;
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Season season = Season.WINTER;
+        System.out.println(season.name());
+    }
+}
+```
+
+Вывод будет:
+```java
+WINTER
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
