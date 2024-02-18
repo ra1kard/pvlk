@@ -6,7 +6,7 @@ public class Worker {
     private final String name;                              //имя сотрудника
     private ArrayList<Task> tasks = new ArrayList<>();      //список задач сотрудника
 
-    Worker(String name) {
+    public Worker(String name) {
         this.name = name;
     }
 
@@ -16,6 +16,7 @@ public class Worker {
     public ArrayList<Task> getTasks() {
         return tasks;
     }
+
     public void addTasks(Task task) {
         this.tasks.add(task);
     }
@@ -84,4 +85,3 @@ public class Worker {
         }
     }
 }
-

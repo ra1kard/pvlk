@@ -24,14 +24,6 @@ public class Start {
         }
 
         workers.get(0).printMostCountDifficultTask(workers);
-
-    }
-
-    /**
-     * перенести метод сюда
-     */
-    public static void printMostCountDifficultTask() {
-
     }
 
 }
