@@ -1,4 +1,4 @@
-package classes.Task11_2;
+package classes.task11_2;
 
 public class Task {
     private Difficult difficult;    //сложность задачи  1 легкий, 2 средний, 3 сложный
