@@ -335,19 +335,212 @@ WINTER
 ```
 
 
+## Класс LocalTime
+
+Класс несложный.
+
+### Пример, когда создаем и заносим свои значения:
+Используем LocalTime.of
+
+```java
+import java.time.LocalTime;
+
+public class LocalTimeDemo1 {
+   public static void main(String[] args) {
+      // С часами (0-23) и минутами (0-59)
+      LocalTime fiveThirty = LocalTime.of(5, 30);
+
+      //С часами, минутами и секундами (0-59)
+      LocalTime noon = LocalTime.of(12, 0, 30);
+
+      //С часами, минутами, секундами и наносекундами
+      LocalTime almostMidnignt = LocalTime.of(23, 59, 59, 999999);
+
+      System.out.println(fiveThirty);
+      System.out.println(noon);
+      System.out.println(almostMidnignt);
+   }
+}
+```
+Вывод будет:
+```java
+05:30
+12:00:30
+23:59:59.000999999
+```
+
+### Пример, когда мы выводим текущее время:
+Используем LocalTime.now
+
+```java
+import java.time.LocalTime;
+
+public class LocalTimeDemo2 {
+   public static void main(String[] args) {
+      LocalTime now = LocalTime.now();
+      int hour = now.getHour();
+      int minute = now.getMinute();
+      int second = now.getSecond();
+      int nanosecond = now.getNano();
+
+      System.out.println(hour);
+      System.out.println(minute);
+      System.out.println(second);
+      System.out.println(nanosecond);
+   }
+}
+```
+Вывод будет:
+```java
+1
+50
+24
+474711000
+```
+
+### Пример разных форматов дня и тп
+
+```java
+import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+
+public class LocalTimeDemo3 {
+   public static void main(String[] args) {
+      LocalTime now = LocalTime.now();
+      int hourAMPM = now.get(ChronoField.HOUR_OF_AMPM);           // 0 - 11   формат1
+      int hourDay = now.get(ChronoField.HOUR_OF_DAY);             // 0 - 23   формат2
+      int minuteDay = now.get(ChronoField.MINUTE_OF_DAY);         // 0 - 1,439
+      int minuteHour = now.get(ChronoField.MINUTE_OF_HOUR);       // 0 - 59
+      int secondDay = now.get(ChronoField.SECOND_OF_DAY);         // 0 - 86,399
+      int secondMinute = now.get(ChronoField.SECOND_OF_MINUTE);   // 0 - 59
+      long nanoDay = now.getLong(ChronoField.NANO_OF_DAY);        // 0 - 86399999999
+      long nanoSecond = now.getLong(ChronoField.NANO_OF_SECOND);  // 0 - 999999999
+
+      System.out.println("Часы: " + hourAMPM);
+      System.out.println("Часы: " + hourDay);
+      System.out.println("Минуты дня: " + minuteDay);
+      System.out.println("Минуты: " + minuteHour);
+      System.out.println("Секунды дня: " + secondDay);
+      System.out.println("Секунды: " + secondMinute);
+      System.out.println("Наносекунды дня: " + nanoDay);
+      System.out.println("Наносекунды: " + nanoSecond);
+   }
+}
+```
+Вывод будет:
+```java
+Часы: 2
+Часы: 2
+Минуты дня: 125
+Минуты: 5
+Секунды дня: 7557
+Секунды: 57
+Наносекунды дня: 7557701681000
+Наносекунды: 701681000
+```
+
+
+### Методы сравнения
+
+Вывод будет:
+```java
+import java.time.LocalTime;
+
+public class CompareLocalTimeDemo {
+   public static void main(String[] args) {
+      LocalTime fiveThirty = LocalTime.of(5, 30);
+      LocalTime noon = LocalTime.of(12, 0, 0);
+      LocalTime almostMidnight = LocalTime.of(23, 59, 59, 99999);
+
+      System.out.println("fiveThirty.isAfter(noon)? " + fiveThirty.isAfter(noon));    //false
+      System.out.println("fiveThirty.isBefore(noon)? " + fiveThirty.isBefore(noon));  //true
+      System.out.println("noon.isAfter(almostMidnight)? " + noon.equals(almostMidnight));     //false
+   }
+}
+```
+
+Вывод будет:
+```java
+fiveThirty.isAfter(noon)? false
+fiveThirty.isBefore(noon)? true
+noon.isAfter(almostMidnight)? false
+```
+
+
+### Методы with 
+
+Когда хочу изменить время - пишем with и передаем новые значения
+
+```java
+import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+
+public class WithLocalTimeDemo {
+   public static void main(String[] args) {
+      LocalTime noon = LocalTime.of(12, 0, 0);
+
+      LocalTime ten = noon.with(ChronoField.HOUR_OF_DAY, 10);
+      LocalTime eight = noon.withHour(8);
+      LocalTime twelveThirty = noon.withMinute(30);
+      LocalTime thirtyTwoSeconds = noon.withSecond(32);
+
+      // Можно использовать сцепление методов
+      LocalTime secondsNano = noon.withSecond(20).withNano(999999);
+
+      System.out.println("ten: " + ten);
+      System.out.println("eight: " + eight);
+      System.out.println("twelveThirty: " + twelveThirty);
+      System.out.println("thirtyTwoSeconds: " + thirtyTwoSeconds);
+      System.out.println("secondsNano: " + secondsNano);
+   }
+}
+```
+
+Вывод будет:
+```java
+ten: 10:00
+eight: 08:00
+twelveThirty: 12:30
+thirtyTwoSeconds: 12:00:32
+secondsNano: 12:00:20.000999999
+```
 
 
 
+### Методы plus() minus()
 
+```java
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
+public class PlusMinusLocalTimeDemo {
+   public static void main(String[] args) {
+      LocalTime fiveThirty = LocalTime.of(5, 30);
 
+      // Добавление
+      LocalTime sixThirty = fiveThirty.plusHours(1);
+      LocalTime fiveForty = fiveThirty.plusMinutes(10);
+      LocalTime plusSeconds = fiveForty.plusSeconds(14);
+      LocalTime plusNanos = fiveForty.plusNanos(9999999);
+      LocalTime sevenThirty = fiveForty.plus(2, ChronoUnit.HOURS);
 
+      // Вычитание
+      LocalTime fourThirty = fiveForty.minusHours(1);
+      LocalTime fiveTen = fiveForty.minusMinutes(20);
+      LocalTime minusSeconds = fiveForty.minusSeconds(2);
+      LocalTime minusNano = fiveForty.minusNanos(1);
+      LocalTime fiveTwenty = fiveForty.minus(10, ChronoUnit.MINUTES);
 
+      System.out.println("sixThirty: " + sixThirty);
+      System.out.println("fiveForty: " + fiveForty);
+   }
+}
+```
 
-
-
-
-
-
+Вывод будет:
+```java
+sixThirty: 06:30
+fiveForty: 05:40
+```
 
 
