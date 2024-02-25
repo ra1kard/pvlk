@@ -79,38 +79,30 @@ public class Worker {
 
     //worker теперь способен заверашть определенную задачу - завершение конкретной работы
     public void complete(Task task) {
-        int index;
-        if (tasks.get(Difficult.EASY__).contains(task)) {
-            index = tasks.get(Difficult.EASY__).indexOf(task);              //найдем индекс в листе
-            tasks.get(Difficult.EASY__).get(index).setStatus(Status.DONE);  //берем значение и меняем поле статус
-            System.out.println(getName() + " " + "выполнил EASY__ задачу:");
-            System.out.println(task.getNumber() + " " + task.getStatus() + " " + task.getDescription());
-            money += tasks.get(Difficult.EASY__).get(index).getCost();
-            tasks.get(Difficult.EASY__).remove(index);
-        } else if (tasks.get(Difficult.MIDDLE).contains(task)) {
-            index = tasks.get(Difficult.MIDDLE).indexOf(task);              //найдем индекс в листе
-            tasks.get(Difficult.MIDDLE).get(index).setStatus(Status.DONE);  //берем значение и меняем поле статус
-            System.out.println(getName() + " " + "выполнил MIDDLE задачу:");
-            System.out.println(task.getNumber() + " " + task.getStatus() + " " + task.getDescription());
-            money += tasks.get(Difficult.MIDDLE).get(index).getCost();
-            tasks.get(Difficult.MIDDLE).remove(index);
-        } else if (tasks.get(Difficult.HARD__).contains(task)) {
-            index = tasks.get(Difficult.HARD__).indexOf(task);              //найдем индекс в листе
-            tasks.get(Difficult.HARD__).get(index).setStatus(Status.DONE);  //берем значение и меняем поле статус
-            System.out.println(getName() + " " + "выполнил HARD__ задачу:");
-            System.out.println(task.getNumber() + " " + task.getStatus() + " " + task.getDescription());
-            money += tasks.get(Difficult.HARD__).get(index).getCost();
-            tasks.get(Difficult.HARD__).remove(index);
-        } else {
+        int index = -1;
+        for (Difficult difficultCurrent : tasks.keySet()) {
+            if (tasks.get(difficultCurrent).contains(task)) {
+                index = tasks.get(difficultCurrent).indexOf(task);              //найдем индекс в листе
+                tasks.get(difficultCurrent).get(index).setStatus(Status.DONE);  //берем значение и меняем поле статус
+                System.out.println(getName() + " " + "выполнил EASY__ задачу:");
+                System.out.println(task.getNumber() + " " + task.getStatus() + " " + task.getDescription());
+                money += tasks.get(difficultCurrent).get(index).getCost();
+                tasks.get(difficultCurrent).remove(index);
+                break;
+            }
+        }
+        if (index == -1) {
             System.out.println("Задача " + task.getNumber() +
                     " не может быть выполнена, не найдена в списке у Рабочего");
         }
         System.out.println();
-        //можно через цикл сократить еще код, перебирая ключ и значение, ключ и значение...
     }
 
 }
 //доделать:
-// 1. сomplete переделать в цикл норм
-// 2. убрать вывод из методов? (опционально, можно для след задач это взять за правило)
-// 3. доделать остальные условия
+// 1+ сomplete переделать в цикл норм
+// 2+ убрать вывод из методов? (опционально, можно для след задач это взять за правило)
+// 3. доделать остальные условия:
+//    - определить незанятого работника (нет задач)
+//    - выполнить по одной случайной задаче у каждого работника
+//    - найти самого богатого работника, и назначить ему две новые задачи случайной сложности
