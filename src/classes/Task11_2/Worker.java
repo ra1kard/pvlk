@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Worker {
-    private final String name;                                              //имя сотрудника
-    private int money = 0;                                                  //личные денежные средства
-    private HashMap<Enum, ArrayList<Task>> tasks = new HashMap<>(Map.of(    //список задач сотр СТАЛ в виде МАПЫ
+    private final String name;                                                      //имя сотрудника
+    private int money = 0;                                                          //личные денежные средства
+    private HashMap<Difficult, ArrayList<Task>> tasks = new HashMap<>(Map.of(       //список задач сотр СТАЛ в виде МАПЫ
             Difficult.EASY__, new ArrayList<>(),
             Difficult.MIDDLE, new ArrayList<>(),
             Difficult.HARD__, new ArrayList<>())
@@ -21,7 +21,7 @@ public class Worker {
         return name;
     }
 
-    public HashMap<Enum, ArrayList<Task>> getTasks() {
+    public HashMap<Difficult, ArrayList<Task>> getTasks() {
         return tasks;
     }
     public void setTasks(Task task) {
@@ -35,7 +35,7 @@ public class Worker {
     }
 
     public void deleteTask(int number) {
-        for (Map.Entry<Enum, ArrayList<Task>> entry : tasks.entrySet()) {               //заходим в мап
+        for (Map.Entry<Difficult, ArrayList<Task>> entry : tasks.entrySet()) {               //заходим в мап
             int count = 0;
             //entry.getValue() - это просто arraylist, в котором (таск1 таск2 таск3)
             for (Task task : entry.getValue()) {                                        //заходим в arraylist
@@ -52,7 +52,7 @@ public class Worker {
 
     public int getCostAllTask() {
         int sum = 0;
-        for (Map.Entry<Enum, ArrayList<Task>> entry : tasks.entrySet()) {
+        for (Map.Entry<Difficult, ArrayList<Task>> entry : tasks.entrySet()) {
             for (Task task : entry.getValue()) {                                        //заходим в arraylist
                 sum += task.getCost();
             }
@@ -62,7 +62,7 @@ public class Worker {
 
     public void printWorkerTasks() {
         System.out.println(name + " имеет денег " + money + " и имеет задачи: ");
-        for (Map.Entry<Enum, ArrayList<Task>> entry : tasks.entrySet()) {
+        for (Map.Entry<Difficult, ArrayList<Task>> entry : tasks.entrySet()) {
             System.out.println("------Сложностью " + entry.getKey().name() + " количество: " + entry.getValue().size());
             int count = 0;
             for (Task task : entry.getValue()) {
@@ -102,10 +102,15 @@ public class Worker {
             money += tasks.get(Difficult.HARD__).get(index).getCost();
             tasks.get(Difficult.HARD__).remove(index);
         } else {
-            System.out.println("Задача " + task.getNumber() + " не может быть выполнена, не найдена в списке у Рабочего");
+            System.out.println("Задача " + task.getNumber() +
+                    " не может быть выполнена, не найдена в списке у Рабочего");
         }
         System.out.println();
         //можно через цикл сократить еще код, перебирая ключ и значение, ключ и значение...
     }
 
 }
+//доделать:
+// 1. сomplete переделать в цикл норм
+// 2. убрать вывод из методов? (опционально, можно для след задач это взять за правило)
+// 3. доделать остальные условия
