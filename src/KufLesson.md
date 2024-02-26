@@ -337,8 +337,6 @@ WINTER
 
 ## Класс LocalTime
 
-Класс несложный.
-
 ### Пример, когда создаем и заносим свои значения:
 Используем LocalTime.of
 
@@ -362,7 +360,6 @@ public class LocalTimeDemo1 {
    }
 }
 ```
-Вывод будет:
 ```java
 05:30
 12:00:30
@@ -390,7 +387,6 @@ public class LocalTimeDemo2 {
    }
 }
 ```
-Вывод будет:
 ```java
 1
 50
@@ -427,7 +423,7 @@ public class LocalTimeDemo3 {
    }
 }
 ```
-Вывод будет:
+
 ```java
 Часы: 2
 Часы: 2
@@ -442,7 +438,6 @@ public class LocalTimeDemo3 {
 
 ### Методы сравнения
 
-Вывод будет:
 ```java
 import java.time.LocalTime;
 
@@ -459,7 +454,6 @@ public class CompareLocalTimeDemo {
 }
 ```
 
-Вывод будет:
 ```java
 fiveThirty.isAfter(noon)? false
 fiveThirty.isBefore(noon)? true
@@ -496,7 +490,6 @@ public class WithLocalTimeDemo {
 }
 ```
 
-Вывод будет:
 ```java
 ten: 10:00
 eight: 08:00
@@ -537,7 +530,6 @@ public class PlusMinusLocalTimeDemo {
 }
 ```
 
-Вывод будет:
 ```java
 sixThirty: 06:30
 fiveForty: 05:40
