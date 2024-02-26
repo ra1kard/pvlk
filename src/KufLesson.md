@@ -414,7 +414,7 @@ public class LocalTimeDemo3 {
 
       System.out.println("Часы: " + hourAMPM);
       System.out.println("Часы: " + hourDay);
-      System.out.println("Минуты дня: " + minuteDay);
+      System.out.println("Минуты дня: " + minuteDay);             // на текущий момент, допустим в 15:41 будет 941
       System.out.println("Минуты: " + minuteHour);
       System.out.println("Секунды дня: " + secondDay);
       System.out.println("Секунды: " + secondMinute);
@@ -535,4 +535,19 @@ sixThirty: 06:30
 fiveForty: 05:40
 ```
 
+
+### Методы сравнения
+
+Можно воспольз LocalTime и ChronoUnit, если используется Java8:
+
+```java
+LocalTime now = LocalTime.parse("10:30");
+LocalTime expected = LocalTime.parse("10:45");
+Long minutes = ChronoUnit.MINUTES.between(now, expected);
+System.out.println(minutes); //15
+```
+
+```java
+15
+```
 
