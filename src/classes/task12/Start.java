@@ -53,15 +53,15 @@ public class Start {
         /**
          * проверка валидации создания передачи не внутри дня
          * */
-        /*TVBroadcast anime = new TVBroadcast(
+        TVBroadcast anime = new TVBroadcast(
                 "anime",
                 LocalTime.of(23,0,1),
-                LocalTime.of(1, 0,0));*/
+                LocalTime.of(1, 0,0));
 
         /**
          * проверка валидации setStart
          */
-        /*System.out.println("Проверка невозможности некорректно установить start через set:");
+        System.out.println("Проверка невозможности некорректно установить start через set:");
         System.out.println(news.getStart() + " start ПРОВЕРЯЕМ");
         System.out.println(news.getEnd() + " end");
         System.out.println();
@@ -69,27 +69,29 @@ public class Start {
         System.out.println(news.getStart());
         System.out.println(news.setStart(LocalTime.of(12, 0, 1)));
         System.out.println(news.getStart());
-        System.out.println();*/
+        System.out.println();
 
         /**
          * проверка валидации setEnd
          */
-        /*System.out.println("Проверка невозможности некорректно установить end через set:");
+        System.out.println("Проверка невозможности некорректно установить end через set:");
         System.out.println(news.getStart() + " start");
         System.out.println(news.getEnd() + " end ПРОВЕРЯЕМ");
         System.out.println();
-        System.out.println(news.setEnd(LocalTime.of(10, 0, 1)));
+        System.out.println(news.setEnd(LocalTime.of(9, 0, 1)));
         System.out.println(news.getEnd());
         System.out.println(news.setEnd(LocalTime.of(3, 0, 1)));
         System.out.println(news.getEnd());
-        System.out.println();*/
+        System.out.println();
 
         /**
          * проверка работы isShow
          */
-        /*System.out.println(LocalTime.now());
+        System.out.println(LocalTime.now());
         System.out.println(animal.isShow(LocalTime.now()));
-        System.out.println(romance.isShow(LocalTime.now()));*/
+        System.out.println(romance.isShow(LocalTime.now()));
+        System.out.println(comedy.isShow(LocalTime.now()));
+        System.out.println( );
 
         /**
          * пример вывода start-end и кол-ва минут интервала
@@ -117,7 +119,7 @@ public class Start {
             } else if (longMin(broadcast) == longMin(array.get(0))) {   //если = дозакинем
                 array.add(broadcast);
             } else if (longMin(broadcast) > longMin(array.get(0))) {    //если > отчистим и закинем новое
-                array.clear();
+                array = new ArrayList<>();
                 array.add(broadcast);
             }
         }
