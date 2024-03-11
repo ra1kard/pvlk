@@ -12,9 +12,9 @@ public class Start {
                 "Агаров А.А.",
                 new ArrayList<>(List.of("Барышиха 21", "Чехова 12")),
                 new ArrayList<>(List.of(Currency.RUB, Currency.CNY, Currency.INR)),
-                350000000);
+                250000000);
         Bank bankSpb = new Bank(
-                "ОАО Тинькофф",
+                "ОАО АТинькофф",
                 "Рубилов Ф.В.",
                 new ArrayList<>(List.of("Игоева 17", "Салютный пер. 7")),
                 new ArrayList<>(List.of(Currency.RUB, Currency.CNY, Currency.USD, Currency.EUR)),
@@ -54,13 +54,15 @@ public class Start {
         printAddressToBank(banks);
     }
 
+    /**
+     * банк с самым большим капиталом
+     */
     public static void printMostCapital(ArrayList<Bank> banks) {
         Bank tempBank = null;
         for (Bank bank : banks) {
             if (tempBank == null) {
                 tempBank = bank;
-            }
-            else if (bank.getCapital() > tempBank.getCapital()) {
+            } else if (bank.getCapital() > tempBank.getCapital()) {
                 tempBank = bank;
             }
         }
@@ -69,6 +71,9 @@ public class Start {
         System.out.println();
     }
 
+    /**
+     * печать всех владельцев банков
+     */
     public static void printOwners(ArrayList<Bank> banks) {
         for (Bank bank : banks) {
             System.out.println("Владелец банка " + bank.getName() + " - " + bank.getOwner());
@@ -76,6 +81,9 @@ public class Start {
         System.out.println();
     }
 
+    /**
+     * печать банков, использующих Юань
+     */
     public static void printBanksUseCNY(ArrayList<Bank> banks) {
         for (Bank bank : banks) {
             if (bank.getCurrency().contains(Currency.CNY)) {
@@ -85,6 +93,9 @@ public class Start {
         System.out.println();
     }
 
+    /**
+     * вывод банков отсортированных по названию
+     */
     public static void printAlphabetBanksName(ArrayList<Bank> banks) {
         TreeSet treeSet = new TreeSet();
         System.out.println("Выведем названия банков в алфавитном порядке:");
@@ -97,6 +108,9 @@ public class Start {
         System.out.println();
     }
 
+    /**
+     * название банка, по указанному пользователем адресу
+     */
     public static void printAddressToBank(ArrayList<Bank> banks) {
         System.out.println("Введите адрес, по которому хотите найти банк: ");
         Scanner console = new Scanner(System.in);
