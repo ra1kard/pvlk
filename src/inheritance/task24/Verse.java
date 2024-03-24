@@ -4,10 +4,8 @@ public class Verse extends LiteratoryWork { //стихи
     private String versification;           //стихосложение (хорей, ямб, дактиль и тд)
     private Short quantityQuatrain;         //количество четверостиший
 
-    Verse(String name, String genre, Short year, String versification, Short quantityQuatrain) {
-        super.setName(name);
-        super.setGenre(genre);
-        super.setYear(year);
+    Verse(String name, String genre, int year, String versification, Short quantityQuatrain) {
+        super(name, genre, year);
         this.versification = versification;
         this.quantityQuatrain = quantityQuatrain;
     }

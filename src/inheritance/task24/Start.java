@@ -12,7 +12,7 @@ public class Start {
         pasternak.setVerses(new Verse(
                 "Любить иных, тяжелый крест",
                 "любовь",
-                (short) 1931,
+                1931,
                 "хорей",
                 (short) 8
         ));
@@ -20,7 +20,7 @@ public class Start {
         pasternak.setVerses(new Verse(
                 "Давай ронять слова…",
                 "дружба",
-                (short) 1917,
+                1917,
                 "ямб",
                 (short) 4
         ));
@@ -28,7 +28,7 @@ public class Start {
         akhmatova.setVerses(new Verse(
                 "Тот август, как желтое пламя…",
                 "война",
-                (short) 1915,
+                1915,
                 "дактиль",
                 (short) 4
         ));
@@ -36,7 +36,7 @@ public class Start {
         akhmatova.setVerses(new Verse(
                 "Я не любви твоей прошу…",
                 "любовь",
-                (short) 1915,
+                1915,
                 "дактиль",
                 (short) 6
         ));
@@ -44,7 +44,7 @@ public class Start {
         nekrasov.setVerses(new Verse(
                 "Я не люблю иронии твоей…",
                 "любовь",
-                (short) 1855,
+                1855,
                 "ямб",
                 (short) 20
         ));
@@ -52,14 +52,14 @@ public class Start {
         nekrasov.setPoems(new Poem(
                 "Саша",
                 "любовь",
-                (short) 1855,
+                1855,
                 (short) 12
         ));
 
         nekrasov.setPoems(new Poem(
                 "Тишина",
                 "война",
-                (short) 1856,
+                1856,
                 (short) 12
         ));
 

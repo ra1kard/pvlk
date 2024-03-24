@@ -1,9 +1,19 @@
 package inheritance.task24;
 
+import inheritance.task25.Loader;
+
+import java.time.LocalDate;
+
 public class LiteratoryWork {       //литературное произведение
     private String name;                //название произведения: стихотворения-поэмы и тп
     private String genre;               //жанр произведения: про любовь, войну, дружбу
-    private Short year;                 //год публикации произведения
+    private LocalDate year;                 //год публикации произведения
+
+    LiteratoryWork(String name, String genre, int year) {
+        this.name = name;
+        this.genre = genre;
+        this.year = LocalDate.of(year, 1, 1);
+    }
 
     public String getName() {
         return name;
@@ -19,10 +29,10 @@ public class LiteratoryWork {       //литературное произвед�
         this.genre = genre;
     }
 
-    public Short getYear() {
+    public LocalDate getYear() {
         return year;
     }
-    public void setYear(Short year) {
+    public void setYear(LocalDate year) {
         this.year = year;
     }
 }
