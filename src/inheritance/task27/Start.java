@@ -141,6 +141,18 @@ public class Start {
     public static void printHasFoundation(ArrayList<House> arrayList) {    // ТУТ НЕ МОГ УКАЗАТЬ <HOUSE>
         System.out.println("Информация о домах с фундаментом:");
         for (House house : arrayList) {
+            if (house.isFoundation()) {
+                System.out.println(
+                        "Материал: " + house.getMaterial() + ", " +
+                                "Этажность: " + house.getNumberOfFloors() + ", "
+                );
+            }
+        }
+        System.out.println();
+    }
+    /*public static void printHasFoundation(ArrayList<House> arrayList) {    // ТУТ НЕ МОГ УКАЗАТЬ <HOUSE>
+        System.out.println("Информация о домах с фундаментом:");
+        for (House house : arrayList) {
             if (house instanceof Cottage && house.isFoundation()) {
                 System.out.println(
                         "Материал: " + house.getMaterial() + ", " +
@@ -158,7 +170,7 @@ public class Start {
             }
         }
         System.out.println();
-    }
+    } */
 
     /**
      * 2. найти городские коттеджи с фундаментом, из кирпича, которые имеют гараж на 2 авто, площадью 100
@@ -184,3 +196,9 @@ public class Start {
 
 
 }
+/*
+* ДЗ:
+* 1+ изучить вопрос: метод toString как самый лучший пример полиморфизма - применить к 27 задаче
+* 2. доделать 27 задачу
+* 3. сделать задачи, что скинет Паша
+* */
