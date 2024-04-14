@@ -21,12 +21,12 @@ public class Archer extends Hero {        //лучник
 
         //и даже критический удар попробуем
         Random random = new Random();
-        if (random.nextInt(5) == 3) {
+        if (random.nextInt(2) == 1) {
             System.out.println("Боже, это критический удар от " + this.getName());
             int temp = getHit();
-            hero.setHit(getHit() + getHit()/2);
+            this.setHit(getHit() + getHit()/2);
             hero.getDamageFromEnemy(this);
-            hero.setHit(temp);
+            this.setHit(temp);
         }
 
         //а теперь получим урон

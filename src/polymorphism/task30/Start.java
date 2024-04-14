@@ -8,12 +8,12 @@ public class Start {
     public static void main(String[] args) {
         Warrior warrior = new Warrior("Captain Am.", 100,20, 30);
         Magician magician = new Magician("Dr. Strange", 100, 40);
-        Archer archer = new Archer("Green Arrow", 100, 30);
+        Archer archer = new Archer("Green Arrow", 100, 40);
 
         ArrayList arrayListHero = new ArrayList<>(List.of(warrior, magician, archer));
         print(arrayListHero);
 
-        warrior.getDamageFromEnemy(magician);
+        /*warrior.getDamageFromEnemy(magician);
         print(arrayListHero);
 
         magician.getDamageFromEnemy(warrior);
@@ -23,15 +23,15 @@ public class Start {
         print(arrayListHero);
 
 
-        /*magician.getDamageFromEnemy(archer);
+        magician.getDamageFromEnemy(archer);
         print(arrayListHero);
 
         archer.getDamageFromEnemy(magician);
         print(arrayListHero);*/
 
 
-        /*fight(warrior, archer);
-        print(arrayListHero);*/
+        fight(warrior, archer);
+        print(arrayListHero);
     }
 
     public static void print(ArrayList<Hero> arrayList) {
