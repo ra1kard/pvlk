@@ -85,4 +85,8 @@ public class Warehouse {
         }
         System.out.println();
     }
+
+    public HashMap<String, Item> getItems() {
+        return items;
+    }
 }
