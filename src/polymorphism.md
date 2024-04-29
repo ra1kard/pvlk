@@ -109,7 +109,7 @@ ___
 пример:
 
 ```java
-package polymorphism.test2;
+package oop_polymorphism.test2;
 
 import java.util.ArrayList;
 
@@ -131,14 +131,14 @@ public class Main {
 }
 
 
-class Employee{
-    public void printName(){
+class Employee {
+    public void printName() {
         System.out.println("Я просто сотрудник");
     }
 }
 
 
-class Boss extends Employee{
+class Boss extends Employee {
     private Integer quantityEmployees;
 
     public Boss(Integer quantityEmployees) {
@@ -156,7 +156,7 @@ class Boss extends Employee{
 }
 
 
-class Manager extends Employee{
+class Manager extends Employee {
     @Override
     public void printName() {
         System.out.println("Я простой менеджер");
@@ -164,7 +164,8 @@ class Manager extends Employee{
 }
 
 
-class Security extends Employee{}
+class Security extends Employee {
+}
 ```
 
 Вывод:
@@ -194,14 +195,14 @@ ______
 Самый простой пример полиморфизма, это то что все прогеры бессознательно используют - метод Object.toString(), например:
 
 ```java
-package polymorphism.test3;
+package oop_polymorphism.test3;
 
 public class Child {
     private int age;
 
     @Override
     public String toString() {
-        return "age is "+age;
+        return "age is " + age;
     }
 
     public static void main(String[] args) {
