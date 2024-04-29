@@ -2,7 +2,7 @@ package interfaces.example1_pavel;
 
 //public interface HomeAnimalInterface extends Walkable{
 public interface HomeAnimalInterface{
-    int a = 50;                 //Является public static final переменной
+    int a = 50;                     //является public static final переменной
 
     /**Отозваться*/
     void getVoice();
@@ -10,7 +10,7 @@ public interface HomeAnimalInterface{
     void eat();
 
 
-    default void printInfo(){
+    default void printInfo(){       //является абстрактным методом
         System.out.println(this);
         getVoice();
         eat();
