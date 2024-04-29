@@ -1,6 +1,7 @@
 package interfaces.task1;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Start {
 
@@ -11,12 +12,7 @@ public class Start {
         Movingable m4 = new Ship(59, true);
         Movingable m5 = new Vampire(70, "Элиз");
 
-        ArrayList<Movingable> arrayList = new ArrayList<>();
-        arrayList.add(m1);
-        arrayList.add(m2);
-        arrayList.add(m3);
-        arrayList.add(m4);
-        arrayList.add(m5);
+        ArrayList<Movingable> arrayList = new ArrayList<>(List.of(m1, m2, m3, m4, m5));
 
         for (Movingable m : arrayList) {
             doMove(m);
