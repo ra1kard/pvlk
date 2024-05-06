@@ -1,6 +1,6 @@
 package interfaces.example5;
 
-public class Journal {
+public class Journal implements Printable {
     private String name;
 
     String getName() {
