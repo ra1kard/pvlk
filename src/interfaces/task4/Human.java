@@ -40,8 +40,8 @@ public class Human implements Aliveable {
         } else {
             this.alive = false;
             ArrayList<Aliveable> a = new ArrayList<>(List.of());
-            a.add((Aliveable) getHomeAnimalList());
-            a.add((Aliveable) getPlantList());
+            a.addAll(getHomeAnimalList());
+            a.addAll(getPlantList());
             this.die(a);
         }
     }

@@ -10,7 +10,7 @@ public class ShootingRange {
         return arrayList;
     }
 
-    public void setArrayList(Targetable targetable) {
+    public void addTarget(Targetable targetable) {
         this.arrayList.add(targetable);
     }
 

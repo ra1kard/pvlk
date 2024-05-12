@@ -9,12 +9,12 @@ public class Start {
         Matchox matchox = new Matchox();
         Plate plate = new Plate();
 
-        shootingRange.setArrayList(bottle);
-        shootingRange.setArrayList(safetyMatch);
-        shootingRange.setArrayList(matchox);
-        shootingRange.setArrayList(plate);
+        shootingRange.addTarget(bottle);
+        shootingRange.addTarget(safetyMatch);
+        shootingRange.addTarget(matchox);
+        shootingRange.addTarget(plate);
 
-        shootingRange.startGame(3);
+        shootingRange.startGame(5);
     }
 
 }
