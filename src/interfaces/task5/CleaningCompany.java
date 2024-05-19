@@ -32,13 +32,13 @@ public class CleaningCompany {
         int count = 0;
         System.out.println("Перечень работ:");
         for (Cleanupable cl : cleanupableList) {
-            System.out.println("Название предмета: " + cl.toString() +
+            System.out.println("Название предмета: " + cl.getName() +
                     ", Тип услуги: " + cl.cleanup() +
                     ", Стоимость = " + cl.getCost());
             count += cleanupItem(cl);
         }
         for (Washable ws : washableList) {
-            System.out.println("Название предмета: " + ws.toString() +
+            System.out.println("Название предмета: " + ws.getName() +
                     ", Тип услуги: " + ws.wash() +
                     ", Стоимость = " + ws.getCost());
             count += washItem(ws);
