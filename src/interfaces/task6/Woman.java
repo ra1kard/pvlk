@@ -14,11 +14,17 @@ public class Woman extends Human {
     }
 
     public void addListClothes(Cloth cloth) {
-        this.listClothes.add(cloth);
+        if (cloth.getSex() == Sex.FEMALE || cloth.getSex() == Sex.UNISEX) {
+            this.listClothes.add(cloth);
+        }
     }
 
     public void addListClothes(ArrayList<Cloth> cloth) {
-        this.listClothes.addAll(cloth);
+        for (Cloth cloth1 : cloth) {
+            if (cloth1.getSex() == Sex.FEMALE || cloth1.getSex() == Sex.UNISEX) {
+                this.listClothes.add(cloth1);
+            }
+        }
     }
 
     public void print() {
@@ -27,8 +33,8 @@ public class Woman extends Human {
                     " еще ничего не купила, покажите ей скидки!");
         } else {
             System.out.println("Девушка " + super.getName() + " купила одежду:");
-            for (Cloth listClothe : listClothes) {
-                System.out.println(listClothe.toString());
+            for (Cloth listCloth : listClothes) {
+                System.out.println(listCloth.getName() + " " + listCloth.getSex());
             }
         }
         System.out.println();

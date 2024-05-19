@@ -17,6 +17,7 @@ public class ShortCloth extends Cloth implements MenClothing, WomenClothing {   
 
     }
 
+    @Override
     public String getName() {
         return name;
     }

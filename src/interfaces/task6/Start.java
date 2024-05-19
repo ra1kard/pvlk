@@ -1,5 +1,8 @@
 package interfaces.task6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Start {
 
     public static void main(String[] args) {
@@ -40,24 +43,32 @@ public class Start {
                 Material.POLYESTER, Size.S, Season.WINTER, Collection.YEAR2024, Sex.FEMALE, Style.BUSINESS);
 
         /**
-         * попробуем одеть штучно
+         * Попробуем одеть штучно
          */
-        vitaly.print();
+        /*vitaly.print();
         inna.print();
 
         olya.addListClothes(skirt1);
         olya.print();
 
-        //shop.dressSomeWoman(skirt2);
+        shop.dressSomeWoman(olya, skirt2);
         olya.print();
 
         igor.addListClothes(trousers1);
-        igor.print();
+        igor.print();*/
 
         /**
-         * попробуем одеть массово
+         * Попробуем одеть массово
          */
+        ArrayList<Cloth> arrayListCloth = new ArrayList<>(List.of(short1, short2, skirt1, skirt2, jeans1, jeans2));
 
+        vitaly.print();
+        shop.dressSomeMan(vitaly, arrayListCloth);
+        vitaly.print();
+
+        inna.print();
+        shop.dressSomeWoman(inna, arrayListCloth);
+        inna.print();
     }
 
 }

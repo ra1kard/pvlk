@@ -7,6 +7,7 @@ public abstract class Cloth {
     private Collection collection;
     private Sex sex;
     private Style style;
+    private String name;
 
     Cloth(Material material, Size size, Season season, Collection collection, Sex sex, Style style) {
         this.material = material;
@@ -57,6 +58,10 @@ public abstract class Cloth {
     }
     public void setStyle(Style style) {
         this.style = style;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

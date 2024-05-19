@@ -13,7 +13,7 @@ public class Skirt extends Cloth implements WomenClothing {          //юбка
     }
 
     @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 

@@ -13,7 +13,7 @@ public class Trousers extends Cloth implements MenClothing {       //штаны
     }
 
     @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 

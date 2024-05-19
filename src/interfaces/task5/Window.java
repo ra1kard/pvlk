@@ -52,6 +52,7 @@ public class Window implements Washable {
         return name;
     }
 
+    @Override
     public String getName() {
         return name;
     }

@@ -18,7 +18,7 @@ public class Jacket extends Cloth implements MenClothing, WomenClothing {
     }
 
     @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 
