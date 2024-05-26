@@ -45,7 +45,7 @@ public class TransportCompany {
                 minFit = container;
             }
         }
-        return (minFit.getVolume() == 2147483647) ? new Container(0, 0, 0) : minFit;
+        return (minFit.getVolume() == Integer.MAX_VALUE) ? new Container(0, 0, 0) : minFit;
     }
 
     void printContainersInfo() {

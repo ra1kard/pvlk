@@ -15,9 +15,6 @@ public class Container {
 
     void loadingItem(Transportable item) {       //погрузка объекта в контейнер
         this.item = item;
-        /*if (canTransport(item)) {
-            this.item = item;
-        }*/
     }
 
     boolean canTransport(Transportable item) {   //возвр true объект помещается в контейн, иначе false

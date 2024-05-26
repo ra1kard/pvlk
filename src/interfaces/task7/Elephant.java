@@ -1,41 +1,19 @@
 package interfaces.task7;
 
-public class Elephant implements Transportable {
-    private int costDelivery;
-    private int width;
-    private int height;
-    private int length;
+public class Elephant extends TranportItem implements Transportable {
 
     Elephant(int costDelivery, int width, int height, int length) {
-        this.costDelivery = costDelivery;
-        this.width = width;
-        this.height = height;
-        this.length = length;
-    }
-
-    @Override
-    public int costDelivery() {
-        return costDelivery;
-    }
-
-    @Override
-    public int getWidth() {
-        return width;
-    }
-
-    @Override
-    public int getHeight() {
-        return height;
-    }
-
-    @Override
-    public int getLength() {
-        return length;
+        super(costDelivery, width, height, length);
     }
 
     @Override
     public String toString() {
         return "Слон";
+    }
+
+    @Override
+    public int costDelivery() {
+        return 0;
     }
 
 }

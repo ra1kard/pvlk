@@ -14,8 +14,9 @@ public class Start {
         Tank t72 = new Tank(5000, 3460, 2190, 9530);
         Elephant el1 = new Elephant(7000,2000, 2400, 5000);    //до 3м; 2.4м - 3.8м; до 7.5м
         Elephant el2 = new Elephant(8000, 3000, 3100, 7000);    //до 3м; 2.4м - 3.8м; до 7.5м
+        Ship ship = new Ship(5000, 30000, 2000, 4000);
 
-        ArrayList<Transportable> transportables = new ArrayList<>(List.of(a1, a4, t14, t72, el1, el2));
+        ArrayList<Transportable> transportables = new ArrayList<>(List.of(ship, a1, a4, t14, t72, el1, el2));
 
         //yandexDelivery.loadingItem(a1);
         //yandexDelivery.printContainersInfo();

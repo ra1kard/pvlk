@@ -1,14 +1,14 @@
 package interfaces.task7;
 
-public class Tank extends TranportItem implements Transportable {
+public class Ship extends TranportItem implements Transportable {
 
-    Tank(int costDelivery, int width, int height, int length) {
+    Ship(int costDelivery, int width, int height, int length) {
         super(costDelivery, width, height, length);
     }
 
     @Override
     public String toString() {
-        return "Танк";
+        return "Корабль";
     }
 
     @Override
