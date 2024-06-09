@@ -3,7 +3,7 @@ package interfaces.task8;
 public class Football implements SportType {
     private final int scoreWin = 3;
     private final int scoreLose = 0;
-    private final int scoreTie = 1;
+    private final int scoreTie = 1;     //ничья
 
     @Override
     public int getScoreWin() {

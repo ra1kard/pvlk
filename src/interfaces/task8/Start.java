@@ -28,6 +28,4 @@ public class Start {
         return teams;
     }
 
-
-
 }
