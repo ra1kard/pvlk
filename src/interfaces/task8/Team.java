@@ -8,6 +8,7 @@ public class Team {
     private int defense;
     private boolean isEndTour;
     ArrayList<Team> playedOpponents = new ArrayList<>();
+    int passedTour = 0;
     private int points;
 
     Team(String name, int attack, int defense) {
@@ -45,7 +46,15 @@ public class Team {
     }
 
     public void addPoints(int score) {
-        points = points;
+        points += score;
+    }
+
+    public int getPassedTour() {
+        return passedTour;
+    }
+
+    public void addPassedTour() {
+        this.passedTour++;
     }
 
 }
