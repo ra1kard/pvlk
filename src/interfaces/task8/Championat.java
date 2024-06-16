@@ -9,6 +9,7 @@ public abstract class Championat {
     private final int countConference;
     private ArrayList<Team> listTeams = new ArrayList<>();      //список участников
     private final int gamesWithEach;
+    int passedTour = 0;
 
     Championat(String name, int year, int countConference, ArrayList<Team> listTeams, int gamesWithEach) {
         this.name = name;
@@ -55,6 +56,14 @@ public abstract class Championat {
 
     public int getGamesWithEach() {
         return gamesWithEach;
+    }
+
+    public int getPassedTour() {
+        return passedTour;
+    }
+
+    public void addPassedTour() {
+        this.passedTour++;
     }
 
 }
