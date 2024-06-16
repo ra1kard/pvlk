@@ -162,6 +162,7 @@ public class ChampionatFootball extends Championat implements SportType {
                     + ", поражения: " + teamTemp.getMatchesLose() + ")");
         }
         System.out.println();
+        System.out.println();
     }
 
     @Override
