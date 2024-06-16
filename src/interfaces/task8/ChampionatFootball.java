@@ -27,57 +27,6 @@ public class ChampionatFootball extends Championat {
         printFinishTable();
     }
 
-    public void scheduleOLD() {
-        //запишем середину = -1 и запишем во все выше середины -1
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[i][j] == 0 && i <= j) {
-                    array[i][j] = -1;
-                }
-            }
-        }
-
-        //запишем последнюю строчку
-        int lastRow = array.length-1;
-        array[lastRow][0] = 1;                                                  //если 1я ячейка нижн строчки = это 1
-        for (int j = 1; j < array.length; j++) {
-            if (array[lastRow][j] == 0) {
-                boolean isRange = (array[lastRow][j-1]+2) <= (countTours);
-                array[lastRow][j] = isRange ? (array[lastRow][j-1]+2) : 2;      //если > 7 начинаем с 2: 1 3 5 7 2 4
-            }
-        }
-
-        //заполним туры
-        int tour = 1;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[i][j] == 0 && tour <= countTours) {           //если пустая ячейка и в пределах
-                    array[i][j] = tour;
-                    tour++;
-                } else if (array[i][j] == 0 && tour > countTours) {     //если пустая ячейка и вне пределов
-                    tour = 1;
-                    array[i][j] = tour;
-                    tour++;
-                } else if (array[i][j] != 0 && tour <= countTours) {    //если НЕ пустая ячейка и в пределах
-                    tour++;
-                } else if (array[i][j] != 0 && tour > countTours) {     //если НЕ пустая ячейка и вне пределов
-                    tour = 1;
-                    tour++;
-                }
-            }
-        }
-
-        //распечатать
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-
-    }
-
     /**
      * Расписание турнира реализовано по круговой системе (используется в большинстве турниров):
      * https://shashki74.blogspot.com/p/blog-page_44.html по способу 3
