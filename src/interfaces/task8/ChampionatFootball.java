@@ -3,46 +3,149 @@ package interfaces.task8;
 import java.util.ArrayList;
 
 public class ChampionatFootball extends Championat {
-    Football football = new Football();
+    Football football = new Football();                     //мб убрать и перенести сюда поля/методы, импл инт
     private final String nameSport = "Футбол";
     int passedTour = 0;
+    boolean isEven = (getListTeams().size() % 2) == 0;                              //четное кол-во команд?
+    int[][] array = isEven ?                                                        // array [8][8]
+            new int[getListTeams().size()][getListTeams().size()] :
+            new int[getListTeams().size()+1][getListTeams().size()+1];
+    int countTours = isEven ? getListTeams().size() - 1 : getListTeams().size();    //четное кол-во команд ? 8-1 : 7;
 
-    ChampionatFootball(String name, int year, int countConference, int countTeamMembers,
-                       ArrayList<Team> listTeams, int countGamesWithEach) {
-        super(name, year, countConference, countTeamMembers, listTeams, countGamesWithEach);
+    ChampionatFootball(String name, int year, int countConference, ArrayList<Team> listTeams, int gamesWithEach) {
+        super(name, year, countConference, listTeams, gamesWithEach);
     }
 
-    public void startChampionat() {
+    public void startChampionat() {                         //вынести на уровень выше и сделать абстрактным
         System.out.println("Турнир стартовал!");
         System.out.println();
-        for (int i = 0; i < getTeamMembers()-1; i++) {
+        schedule();
+        for (int i = 0; i < countTours; i++) {
             tour();
             printTable();
         }
+        printFinishTable();
+    }
+
+    public void scheduleOLD() {
+        //запишем середину = -1 и запишем во все выше середины -1
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i][j] == 0 && i <= j) {
+                    array[i][j] = -1;
+                }
+            }
+        }
+
+        //запишем последнюю строчку
+        int lastRow = array.length-1;
+        array[lastRow][0] = 1;                                                  //если 1я ячейка нижн строчки = это 1
+        for (int j = 1; j < array.length; j++) {
+            if (array[lastRow][j] == 0) {
+                boolean isRange = (array[lastRow][j-1]+2) <= (countTours);
+                array[lastRow][j] = isRange ? (array[lastRow][j-1]+2) : 2;      //если > 7 начинаем с 2: 1 3 5 7 2 4
+            }
+        }
+
+        //заполним туры
+        int tour = 1;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i][j] == 0 && tour <= countTours) {           //если пустая ячейка и в пределах
+                    array[i][j] = tour;
+                    tour++;
+                } else if (array[i][j] == 0 && tour > countTours) {     //если пустая ячейка и вне пределов
+                    tour = 1;
+                    array[i][j] = tour;
+                    tour++;
+                } else if (array[i][j] != 0 && tour <= countTours) {    //если НЕ пустая ячейка и в пределах
+                    tour++;
+                } else if (array[i][j] != 0 && tour > countTours) {     //если НЕ пустая ячейка и вне пределов
+                    tour = 1;
+                    tour++;
+                }
+            }
+        }
+
+        //распечатать
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+    }
+
+    /**
+     * Расписание турнира реализовано по круговой системе (используется в большинстве турниров):
+     * https://shashki74.blogspot.com/p/blog-page_44.html по способу 3
+     * - - -
+     * Используется такая схема, т.к. не удастся использовать более простую схему - с кем играл / с кем не играл.
+     * Круговой турнир должен предусматривать чтобы максимально в каждом туре каждый сыграл с каждым, иначе выходило:
+     * team1
+     * team2
+     * team3
+     * team4
+     * team5
+     * team6
+     * - - -
+     * играют 1 тур:
+     * team1-2
+     * team3-4
+     * team5-6
+     * - - -
+     * играют 2 тур:
+     * team1-3
+     * team2-4
+     * team5-6 //не могут сыграть, так как уже играли в 1 туре, выходит, что уже начинается ерунда по турам
+     * чтобы этого избежать и использовать более эффективное расписание - берем метод круговой системы (см вики/инет):
+     */
+    public void schedule() {
+        //заполним туры в ячейки, потом для тура 2 будем искать ячейку со значением = 2, i будем teamA, j teamB
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < i; j++) {
+                array[i][j] = ((i + j) % (array.length - 1)) + 1;
+            }
+        }
+
+        //запишем последнюю строчку по определенной логике
+        int lastRow = array.length - 1;
+        array[lastRow][0] = 1;                                                  //если 1я ячейка нижн строчки = это 1
+        for (int j = 1; j < array.length - 1; j++) {
+            boolean isRange = array[lastRow][j - 1] + 2 <= array.length;
+            array[lastRow][j] = isRange ? array[lastRow][j - 1] + 2 : 2;        //если > 7 начинаем с 2: 1 3 5 7 2 4
+        }
+
+        //распечатаем, чтобы видеть расписание туров
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public void tour() {
         addPassedTour();
+        //для первого тура мне надо найти цифру 1 в таблице и соответственно узнаю команды
         System.out.println("########################## Тур №" + getPassedTour() + " ##########################");
-        System.out.println();
-        for (int i = 0; i < getListTeams().size(); i++) {       //берем командуА
-            for (int j = 0; j < getListTeams().size(); j++) {   //ищем соперника командуБ
-                if (i != j                                                              //если это не одна и та же team
-                        && getListTeams().get(i).getPassedTour() < getPassedTour()      //если тур командыА не сыгран
-                        && getListTeams().get(j).getPassedTour() < getPassedTour()) {   //если тур командыБ не сыгран
-                    boolean isContains = getListTeams().get(i).getPlayedOpponents().contains(getListTeams().get(j));
-                    if (!isContains) {                                                  //если не играли друг с другом
-                        game(getListTeams().get(i), getListTeams().get(j));
-                        getListTeams().get(i).addPlayedOpponents(getListTeams().get(j));        //в список, с кем играл
-                        getListTeams().get(j).addPlayedOpponents(getListTeams().get(i));
-                        getListTeams().get(i).addPassedTour();                                  //ставим "тур пройден"
-                        getListTeams().get(j).addPassedTour();
-                    }
-                    break;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i][j] == getPassedTour()      //если значение двумерного массива = № тура, берем команды
+                        && (isEven || i != getListTeams().size() && j != getListTeams().size())) {
+                    Team teamA = getListTeams().get(i);
+                    Team teamB = getListTeams().get(j);
+                    game(teamA, teamB);
+                    getListTeams().get(i).addPlayedOpponents(getListTeams().get(j));
+                    getListTeams().get(j).addPlayedOpponents(getListTeams().get(i));
+                    getListTeams().get(i).addPassedTour();
+                    getListTeams().get(j).addPassedTour();
                 }
             }
         }
-        System.out.println();
     }
 
     public void game(Team teamA, Team teamB) {
@@ -89,6 +192,14 @@ public class ChampionatFootball extends Championat {
         System.out.println();
     }
 
+    public void printFinishTable() {
+        System.out.println("----------------- ИТОГОВАЯ ТАБЛИЦА -----------------");
+        System.out.println();
+        ArrayList<Team> tempListTeams = getListTeams();
+        //Collections.sort(getListTeams());
+    }
+    //потребуется компоратор вторым параметром
+
     public String getNameSport() {
         return nameSport;
     }
@@ -100,5 +211,6 @@ public class ChampionatFootball extends Championat {
     public void addPassedTour() {
         this.passedTour++;
     }
-
 }
+
+//таблица - стандартные сортировки в arrayList
