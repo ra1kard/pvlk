@@ -9,7 +9,7 @@ public class Team implements Comparable<Team> {
     private int matchesWin;
     private int matchesLose;
     private int matchesTie;
-    private ArrayList<Team> playedOpponents = new ArrayList<>();        //было актуально, теперь можно выпилить по идее
+    private final ArrayList<Team> playedOpponents = new ArrayList<>();        //было актуально, теперь можно выпилить по идее
     private int passedTour = 0;
     private int points;
 

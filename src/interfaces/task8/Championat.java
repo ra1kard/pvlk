@@ -7,7 +7,7 @@ public abstract class Championat {
     private String nameSport;
     private final int year;
     private final int countConference;
-    private ArrayList<Team> listTeams = new ArrayList<>();      //список участников
+    private final ArrayList<Team> listTeams = new ArrayList<>();      //список участников
     private final int gamesWithEach;
     private int passedTour = 0;
 
