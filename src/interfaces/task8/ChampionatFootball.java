@@ -3,8 +3,7 @@ package interfaces.task8;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ChampionatFootball extends Championat {
-    Football football = new Football();                     //мб убрать и перенести сюда поля/методы, импл инт -
+public class ChampionatFootball extends Championat implements SportType {
     int passedTour = 0;
     boolean isEven = (getListTeams().size() % 2) == 0;                              //четное кол-во команд?
     int[][] array = isEven ?                                                        // array [8][8]
@@ -30,7 +29,7 @@ public class ChampionatFootball extends Championat {
 
     /**
      * Расписание турнира реализовано по круговой системе (используется в большинстве турниров):
-     * https://shashki74.blogspot.com/p/blog-page_44.html по способу 3
+     * <a href="https://shashki74.blogspot.com/p/blog-page_44.html">...</a> по способу 3
      * - - -
      * Используется такая схема, т.к. не удастся использовать более простую схему - с кем играл / с кем не играл.
      * Круговой турнир должен предусматривать чтобы максимально в каждом туре каждый сыграл с каждым, иначе выходило:
@@ -114,16 +113,22 @@ public class ChampionatFootball extends Championat {
         }
         if (goalTeamA > goalTeamB) {
             System.out.println(teamA.getName() + " забила больше голов");
-            teamA.addPoints(football.getScoreWin());        //победителю присуждаем очки
-            teamB.addPoints(football.getScoreLose());       //проигравшим присуждаем очки
+            teamA.addPoints(getScoreWin());        //победителю присуждаем очки
+            teamA.addMatchesWin();                 //победителю добавляем победу
+            teamB.addPoints(getScoreLose());       //проигравшим присуждаем очки
+            teamB.addMatchesLose();                //проигравшему добавляем поражение
         } else if (goalTeamB > goalTeamA) {
             System.out.println(teamB.getName() + " забила больше голов");
-            teamB.addPoints(football.getScoreWin());
-            teamA.addPoints(football.getScoreLose());
+            teamB.addPoints(getScoreWin());
+            teamB.addMatchesWin();
+            teamA.addPoints(getScoreLose());
+            teamA.addMatchesLose();
         } else {
             System.out.println("ничья");
-            teamA.addPoints(football.getScoreTie());
-            teamB.addPoints(football.getScoreTie());
+            teamA.addPoints(getScoreTie());
+            teamA.addMatchesTie();
+            teamB.addPoints(getScoreTie());
+            teamB.addMatchesTie();
         }
         System.out.println(
                 teamA.getName() + " (очков: " + teamA.getPoints() + ") и "
@@ -152,7 +157,10 @@ public class ChampionatFootball extends Championat {
             System.out.println(
                     i+1 + ". "
                     + teamTemp.getName() + " очков " + teamTemp.getPoints()
-                    + ", туров: " + teamTemp.getPassedTour());
+                    + ", туров: " + teamTemp.getPassedTour()
+                    + ", (побед: " + teamTemp.getMatchesWin()
+                    + ", ничьи: "  + teamTemp.getMatchesTie()
+                    + ", поражений: " + teamTemp.getMatchesLose() + ")");
         }
         System.out.println();
     }
@@ -163,6 +171,21 @@ public class ChampionatFootball extends Championat {
 
     public void addPassedTour() {
         this.passedTour++;
+    }
+
+    @Override
+    public int getScoreWin() {
+        return 3;
+    }
+
+    @Override
+    public int getScoreLose() {
+        return 0;
+    }
+
+    public int getScoreTie() {
+        //ничья
+        return 1;
     }
 
 }

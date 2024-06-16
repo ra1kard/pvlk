@@ -3,11 +3,14 @@ package interfaces.task8;
 import java.util.ArrayList;
 
 public class Team implements Comparable<Team> {
-    private String name;
-    private int attack;
-    private int defense;
-    ArrayList<Team> playedOpponents = new ArrayList<>();
-    int passedTour = 0;
+    private final String name;
+    private final int attack;
+    private final int defense;
+    private int matchesWin;
+    private int matchesLose;
+    private int matchesTie;
+    private ArrayList<Team> playedOpponents = new ArrayList<>();        //было актуально, теперь можно выпилить по идее
+    private int passedTour = 0;
     private int points;
 
     Team(String name, int attack, int defense) {
@@ -55,6 +58,30 @@ public class Team implements Comparable<Team> {
 
     public void addPassedTour() {
         this.passedTour++;
+    }
+
+    public int getMatchesWin() {
+        return matchesWin;
+    }
+
+    public void addMatchesWin() {
+        this.matchesWin++;
+    }
+
+    public int getMatchesLose() {
+        return matchesLose;
+    }
+
+    public void addMatchesLose() {
+        this.matchesLose++;
+    }
+
+    public int getMatchesTie() {
+        return matchesTie;
+    }
+
+    public void addMatchesTie() {
+        this.matchesTie++;
     }
 
 }
