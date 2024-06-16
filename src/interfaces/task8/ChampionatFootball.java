@@ -19,9 +19,14 @@ public class ChampionatFootball extends Championat implements SportType {
         System.out.println("Турнир стартовал!");
         System.out.println();
         schedule();
-        for (int i = 0; i < countTours; i++) {
-            tour();
-            printTable();
+        for (int i = 0; i < getGamesWithEach(); i++) {
+            System.out.println("Круг № " + (i+1));
+            System.out.println();
+            setPassedTour(0);
+            for (int j = 0; j < countTours; j++) {
+                tour();
+                printTable();
+            }
         }
         printFinishTable();
     }

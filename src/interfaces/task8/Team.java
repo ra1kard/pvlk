@@ -12,11 +12,13 @@ public class Team implements Comparable<Team> {
     private final ArrayList<Team> playedOpponents = new ArrayList<>();        //было актуально, теперь можно выпилить по идее
     private int passedTour = 0;
     private int points;
+    private final Enum<Conference> conference;
 
-    Team(String name, int attack, int defense) {
+    Team(String name, int attack, int defense, Enum<Conference> conference) {
         this.name = name;
         this.attack = attack;
         this.defense = defense;
+        this.conference = conference;
     }
 
     @Override
@@ -82,6 +84,10 @@ public class Team implements Comparable<Team> {
 
     public void addMatchesTie() {
         this.matchesTie++;
+    }
+
+    public Enum<Conference> getConference() {
+        return conference;
     }
 
 }

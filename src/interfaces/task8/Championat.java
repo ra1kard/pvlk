@@ -66,4 +66,8 @@ public abstract class Championat {
         this.passedTour++;
     }
 
+    public void setPassedTour(int passedTour) {
+        this.passedTour = passedTour;
+    }
+
 }

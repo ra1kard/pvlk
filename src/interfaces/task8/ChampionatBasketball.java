@@ -20,9 +20,14 @@ public class ChampionatBasketball extends Championat implements SportType {
         System.out.println("Турнир стартовал!");
         System.out.println();
         schedule();
-        for (int i = 0; i < countTours; i++) {
-            tour();
-            printTable();
+        for (int i = 0; i < getGamesWithEach(); i++) {
+            System.out.println("Круг № " + (i+1));
+            System.out.println();
+            setPassedTour(0);
+            for (int j = 0; j < countTours; j++) {
+                tour();
+                printTable();
+            }
         }
         printFinishTable();
     }
@@ -107,10 +112,14 @@ public class ChampionatBasketball extends Championat implements SportType {
                 System.out.println(teamA.getName() + " вырывает победу");
                 teamA.addPoints(getScoreWin());
                 teamA.addMatchesWin();
+                teamB.addPoints(getScoreLose());
+                teamB.addMatchesLose();
             } else {
                 System.out.println(teamB.getName() + " вырывает победу");
                 teamB.addPoints(getScoreWin());
                 teamB.addMatchesWin();
+                teamA.addPoints(getScoreLose());
+                teamA.addMatchesLose();
             }
         }
         System.out.println(
