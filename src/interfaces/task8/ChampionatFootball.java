@@ -1,10 +1,10 @@
 package interfaces.task8;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ChampionatFootball extends Championat {
-    Football football = new Football();                     //мб убрать и перенести сюда поля/методы, импл инт
-    private final String nameSport = "Футбол";
+    Football football = new Football();                     //мб убрать и перенести сюда поля/методы, импл инт -
     int passedTour = 0;
     boolean isEven = (getListTeams().size() % 2) == 0;                              //четное кол-во команд?
     int[][] array = isEven ?                                                        // array [8][8]
@@ -14,6 +14,7 @@ public class ChampionatFootball extends Championat {
 
     ChampionatFootball(String name, int year, int countConference, ArrayList<Team> listTeams, int gamesWithEach) {
         super(name, year, countConference, listTeams, gamesWithEach);
+        setNameSport("Футбол");
     }
 
     public void startChampionat() {                         //вынести на уровень выше и сделать абстрактным
@@ -142,15 +143,18 @@ public class ChampionatFootball extends Championat {
     }
 
     public void printFinishTable() {
-        System.out.println("----------------- ИТОГОВАЯ ТАБЛИЦА -----------------");
+        System.out.println("########################## ИТОГОВАЯ ТАБЛИЦА С СОРТИРОВКОЙ ##########################");
         System.out.println();
-        ArrayList<Team> tempListTeams = getListTeams();
-        //Collections.sort(getListTeams());
-    }
-    //потребуется компоратор вторым параметром
-
-    public String getNameSport() {
-        return nameSport;
+        ArrayList<Team> tempListTeams = new ArrayList<>(getListTeams());      //список участников
+        Collections.sort(tempListTeams);
+        for (int i = 0; i < tempListTeams.size(); i++) {
+            Team teamTemp = tempListTeams.get(i);
+            System.out.println(
+                    i+1 + ". "
+                    + teamTemp.getName() + " очков " + teamTemp.getPoints()
+                    + ", туров: " + teamTemp.getPassedTour());
+        }
+        System.out.println();
     }
 
     public int getPassedTour() {
@@ -160,6 +164,5 @@ public class ChampionatFootball extends Championat {
     public void addPassedTour() {
         this.passedTour++;
     }
-}
 
-//таблица - стандартные сортировки в arrayList
+}

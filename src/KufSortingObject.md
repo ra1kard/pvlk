@@ -321,6 +321,15 @@ getManufactureYear=2012, getMaxSpeed=290, model=Lamborghini Gallardo```
 ```
 Машины отсортированы как надо! :)
 
+P.S. ЕСЛИ ХОТИМ НАОБОРОТ ОБРАТНУЮ СОРТИРОВКУ:
+вычитаем из o.object текущее
+```java
+@Override
+public int compareTo(Car o) {
+   return this.o.getManufactureYear() - getManufactureYear();
+}
+```
+
 ___
 
 В каких случаях надо использовать Comparable?

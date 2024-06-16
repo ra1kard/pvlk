@@ -2,11 +2,10 @@ package interfaces.task8;
 
 import java.util.ArrayList;
 
-public class Team {
+public class Team implements Comparable<Team> {
     private String name;
     private int attack;
     private int defense;
-    private boolean isEndTour;
     ArrayList<Team> playedOpponents = new ArrayList<>();
     int passedTour = 0;
     private int points;
@@ -15,6 +14,11 @@ public class Team {
         this.name = name;
         this.attack = attack;
         this.defense = defense;
+    }
+
+    @Override
+    public int compareTo(Team o) {
+        return o.getPoints() - getPoints();
     }
 
     public String getName() {
@@ -27,10 +31,6 @@ public class Team {
 
     public int getDefense() {
         return defense;
-    }
-
-    public boolean isEndTour() {
-        return isEndTour;
     }
 
     public ArrayList<Team> getPlayedOpponents() {
