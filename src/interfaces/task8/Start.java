@@ -7,9 +7,16 @@ public class Start {
     public static void main(String[] args) {
 
         ChampionatFootball championatFootball = new ChampionatFootball(
-                "РПЛ", 2024, 1, generateTeams(16), 2);
+                "РПЛ", 2024, 1, generateTeams(7), 2
+        );
         Championat.printTeamFromChampionat(championatFootball);
         championatFootball.startChampionat();
+
+        /*ChampionatBasketball championatBasketball = new ChampionatBasketball(
+                "Единая лига ВТБ", 2024, 1, generateTeams(8), 2
+        );
+        Championat.printTeamFromChampionat(championatBasketball);
+        championatBasketball.startChampionat();*/
     }
 
     public static ArrayList<Team> generateTeams(int count) {

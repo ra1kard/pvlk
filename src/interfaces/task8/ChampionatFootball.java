@@ -158,9 +158,9 @@ public class ChampionatFootball extends Championat implements SportType {
                     i+1 + ". "
                     + teamTemp.getName() + " очков " + teamTemp.getPoints()
                     + ", туров: " + teamTemp.getPassedTour()
-                    + ", (побед: " + teamTemp.getMatchesWin()
+                    + ", (победы: " + teamTemp.getMatchesWin()
                     + ", ничьи: "  + teamTemp.getMatchesTie()
-                    + ", поражений: " + teamTemp.getMatchesLose() + ")");
+                    + ", поражения: " + teamTemp.getMatchesLose() + ")");
         }
         System.out.println();
     }

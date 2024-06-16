@@ -18,26 +18,6 @@ public abstract class Championat {
         this.gamesWithEach = gamesWithEach;
     }
 
-    public ArrayList<Team> getListTeams() {
-        return listTeams;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getCountConference() {
-        return countConference;
-    }
-
-    public int getGamesWithEach() {
-        return gamesWithEach;
-    }
-
     public static void printTeamFromChampionat(Championat championat) {
         System.out.println("Это чемпионат " + "\"" + championat.getName() + "\"" + " " + championat.getYear()
                 + ", по виду спорта: " + championat.getNameSport() );
@@ -49,12 +29,32 @@ public abstract class Championat {
         System.out.println();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getNameSport() {
         return nameSport;
     }
 
     public void setNameSport(String nameSport) {
         this.nameSport = nameSport;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getCountConference() {
+        return countConference;
+    }
+
+    public ArrayList<Team> getListTeams() {
+        return listTeams;
+    }
+
+    public int getGamesWithEach() {
+        return gamesWithEach;
     }
 
 }
