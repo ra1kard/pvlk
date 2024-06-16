@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ChampionatFootball extends Championat implements SportType {
-    boolean isEven = (getListTeams().size() % 2) == 0;                              //четное кол-во команд?
-    int[][] array = isEven ?                                                        // array [8][8]
+    private boolean isEven = (getListTeams().size() % 2) == 0;                              //четное кол-во команд?
+    private int[][] array = isEven ?                                                        // array [8][8]
             new int[getListTeams().size()][getListTeams().size()] :
             new int[getListTeams().size()+1][getListTeams().size()+1];
-    int countTours = isEven ? getListTeams().size() - 1 : getListTeams().size();    //четное кол-во команд ? 8-1 : 7;
+    private int countTours = isEven ? getListTeams().size() - 1 : getListTeams().size();    //четное кол-во команд ? 8-1 : 7;
 
     ChampionatFootball(String name, int year, int countConference, ArrayList<Team> listTeams, int gamesWithEach) {
         super(name, year, countConference, listTeams, gamesWithEach);
