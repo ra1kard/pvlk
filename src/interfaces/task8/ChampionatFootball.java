@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ChampionatFootball extends Championat implements SportType {
-    int passedTour = 0;
     boolean isEven = (getListTeams().size() % 2) == 0;                              //четное кол-во команд?
     int[][] array = isEven ?                                                        // array [8][8]
             new int[getListTeams().size()][getListTeams().size()] :
@@ -163,14 +162,6 @@ public class ChampionatFootball extends Championat implements SportType {
                     + ", поражения: " + teamTemp.getMatchesLose() + ")");
         }
         System.out.println();
-    }
-
-    public int getPassedTour() {
-        return passedTour;
-    }
-
-    public void addPassedTour() {
-        this.passedTour++;
     }
 
     @Override
