@@ -6,19 +6,16 @@ import java.util.Random;
 public class Start {
     public static void main(String[] args) {
         ChampionatFootball championatFootball = new ChampionatFootball(
-                "РПЛ", 2024, 1, generateTeams(7, 1), 2);
-        Championat.printTeamFromChampionat(championatFootball);
-        championatFootball.startChampionat();
+                "РПЛ", 2024, 1, generateTeams(8, 1), 2);
+        championatFootball.startChampionat(championatFootball);
 
-        /*ChampionatBasketball championatBasketball = new ChampionatBasketball(
-                "Единая лига ВТБ", 2024, 1, generateTeams(7, 1), 2);
-        Championat.printTeamFromChampionat(championatBasketball);
-        championatBasketball.startChampionat();*/
+        ChampionatBasketball championatBasketball = new ChampionatBasketball(
+                "Единая лига ВТБ", 2024, 1, generateTeams(8, 1), 2);
+        championatBasketball.startChampionat(championatBasketball);
 
-        /*ChampionatHockey championatHockey = new ChampionatHockey(
-                "КХЛ", 2024, 2, generateTeams(7, 2), 1);
-        championatHockey.printTeamFromChampionat(championatHockey);
-        championatHockey.startChampionat();*/
+        ChampionatHockey championatHockey = new ChampionatHockey(
+                "КХЛ", 2024, 2, generateTeams(7, 2), 2);
+        championatHockey.startChampionat(championatHockey);
     }
 
     public static ArrayList<Team> generateTeams(int count, int countConference) {
