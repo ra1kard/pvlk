@@ -10,15 +10,15 @@ public class Start {
         Championat.printTeamFromChampionat(championatFootball);
         championatFootball.startChampionat();
 
-        ChampionatBasketball championatBasketball = new ChampionatBasketball(
+        /*ChampionatBasketball championatBasketball = new ChampionatBasketball(
                 "Единая лига ВТБ", 2024, 1, generateTeams(7, 1), 2);
         Championat.printTeamFromChampionat(championatBasketball);
-        championatBasketball.startChampionat();
+        championatBasketball.startChampionat();*/
 
-        ChampionatHockey championatHockey = new ChampionatHockey(
+        /*ChampionatHockey championatHockey = new ChampionatHockey(
                 "КХЛ", 2024, 2, generateTeams(7, 2), 1);
         championatHockey.printTeamFromChampionat(championatHockey);
-        championatHockey.startChampionat();
+        championatHockey.startChampionat();*/
     }
 
     public static ArrayList<Team> generateTeams(int count, int countConference) {
