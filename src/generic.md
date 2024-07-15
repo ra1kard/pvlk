@@ -1,15 +1,3 @@
-```java
- 
-```
-
-```java
- 
-```
-
-```java
- 
-```
-
 
 # Обобщения (Generic)
 
@@ -494,35 +482,112 @@ ___
 
 
 
+___
+___
+___
+
+1. принципы PECS 
+2. wild card
+
+описать с примерами 
+описать принципы 
+и объяснение почему оно так работает - почему это безопасно
+
+
+и дз (вторая с wild картами)
 
 
 
 
 
 
+### Еще примеры
+
+https://skillbox.ru/media/base/dzheneriki-v-java-dlya-samykh-malenkikh/?topic=base&section=dzheneriki-v-java-dlya-samykh-malenkikh
+
+___ 
+
+## Еще примеры
+
+### Пример №1 без дженериков:
+
+```java
+public class Start {
+
+    public static void main(String[] args) {
+        PrintClass printClass = new PrintClass();
+        printClass.printAll();
+        printClass.print(1);
+    }
+
+}
+```
 
 
+```java
+public class PrintClass {
+    ArrayList<String> values;       //поле приватное и не имеет сеттера геттера
 
+    //сама коллекция должна инициироваться в конструкторе
+    PrintClass() {
+        values = new ArrayList<>(List.of("Раз", "Два", "Четыре", "Восемь"));
+    }
 
+    //Вывести все значения из списка. Каждое новое значение выводится с новой строки
+    public void printAll() {
+        for (String value : values) {
+            System.out.println(value);
+        }
+        System.out.println();
+    }
 
+    //Вывести значение из списка под указанным номером
+    public void print(int a) {
+        System.out.println(values.get(a));
+    }
 
+}
 
+```
 
+### Пример №2 с дженериками:
 
+```java
+public class Start {
 
+    public static void main(String[] args) {
+        PrintClass <String> printClass = new PrintClass<>();
+        printClass.printAll();
+        printClass.print(1);
+    }
 
+}
+```
 
+```java 
+public class PrintClass <T> {
+ArrayList<T> values;       //поле приватное и не имеет сеттера геттера
 
+    //сама коллекция должна инициироваться в конструкторе
+    PrintClass() {
+        values = new ArrayList (List.of("Раз", "Два", "Четыре", "Восемь"));
+    }
 
+    //Вывести все значения из списка. Каждое новое значение выводится с новой строки
+    public void printAll() {
+        for (T value : values) {
+            System.out.println(value);
+        }
+        System.out.println();
+    }
 
+    //Вывести значение из списка под указанным номером
+    public void print(int a) {
+        System.out.println(values.get(a));
+    }
 
-
-
-
-
-
-
-
+}
+```
 
 
 
