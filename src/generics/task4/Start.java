@@ -100,7 +100,7 @@ public class Start {
     // - после этого, выведите те острова, в котором спрятаны пустые сундуки
     // - а после выведите остров с самым богатым сундуком
 
-    // это разве верно? первый Diamonds idea подсказывает лишний
-    // Island island1 = new Island("Филиппины", new Chest<Diamonds>(new Diamonds(0)));
+    //  ы это разве верно? первый Diamonds idea подсказывает лишний
+    //  ы Island island1 = new Island("Филиппины", new Chest<Diamonds>(new Diamonds(0)));
 
 }
