@@ -10,7 +10,7 @@ public abstract class Championat implements SportType {
     private final int countConference;
     private final ArrayList<Team> listTeams = new ArrayList<>();
     private final int gamesWithEach;
-    private int passedTour = 0;
+    private int passedTour = 0;                                                 //тест2
     private final int[][] tableChampionship;                                    //array [8][8]
     private final boolean isEven;                                               //четное кол-во команд?
 
