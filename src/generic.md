@@ -589,6 +589,422 @@ ArrayList<T> values;       //поле приватное и не имеет се
 }
 ```
 
+___
+
+## Что стоит запомнить
+
+1. мы по факту описываем абстрактно в классе с T
+2. а при создании указываем уже определенный тип данных
+
+
+3. и если мы допустим уже в объект1 добавили тип string, 
+4. в этот же объект1 тип int не добавим - будет ошибка компиляции
+5. соответственно нам не надо делать доп логику на проверку (код сокращается)
+
+Это и есть ключевое, что пока стоит запомнить (был затык с этим)
+
+___
+
+### Пример:
+
+```java 
+public abstract class Animal {
+    private String name;
+    private int age;
+
+    Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+}
+```
+
+```java 
+public class Snake extends Animal {
+
+    Snake(String name, int age) {
+        super(name, age);
+    }
+
+}
+```
+
+```java 
+public class Dolphin extends Animal {
+
+    Dolphin(String name, int age) {
+        super(name, age);
+    }
+
+}
+```
+
+```java 
+public class Bear extends Animal {
+
+    Bear(String name, int age) {
+        super(name, age);
+    }
+
+}
+```
+
+```java 
+public class Cage<T extends Animal> {
+    private int numberCage;             //номер клетки
+    private int capacity;               //вместимость (считаю не может быть меньше 1)
+    private int added;                  //добавлено
+    private ArrayList<T> animals;       //список животных
+
+    Cage(int capacity, int numberCage) {
+        animals = new ArrayList<>();
+        if (capacity < 1) {
+            System.out.println("Вместимость не может быть меньше 1");
+        } else {
+            this.capacity = capacity;
+            this.numberCage = numberCage;
+        }
+    }
+
+    //добавление животного (не добавлять животное, если превышен лимит максимального кол-ва)
+    public void addAnimal(T animal) {
+        System.out.print("Пробуем добавить в клетку №" + numberCage + " " + animal.getName() + " = ");
+        if (isFreePlaces(animal)) {                     //если пусто - ок
+            animals.add(animal);
+            added++;
+            System.out.println("Успех. Животное добавлено.");
+        } else if (capacity > added) {                  //если вместимость позволяет
+            animals.add(animal);
+            added++;
+            System.out.println("Успех. Животное добавлено.");
+        } else {
+            System.out.println("Отказ. В клетке максимальное кол-во животных.");
+        }
+    }
+
+    //определяет возможность добавления животного в клетку
+    public boolean isFreePlaces(T animal) {
+        if (animals.isEmpty()) {                        //если пусто - ок
+            return true;
+        } else
+            return (capacity > added);                  //если вместимость позволяет
+    }
+
+    //вывести животного из клетки (метод возвращает животное и удаляет его из списка животных клетки
+    public Animal takeOutAnimal(String nameAnimal) {
+        Animal tempAnimal = null;
+        for (Animal animal : animals) {
+            if (animal.getName().equals(nameAnimal)) {
+                animals.remove(animal);
+                System.out.println(animal.getName() + ": Животное выведено из клетки");
+                tempAnimal = animal;
+                break;
+            }
+        }
+        return tempAnimal;
+    }
+
+    //перевод жив из тек клетки в другую (убед что в клетке куда перев есть своб место, иначе перев не вып)
+    public void transferAnimal(String nameAnimal, Cage cageWhere) {
+        System.out.println("Попытка трансфера животного " + nameAnimal
+                + " из клетки №" + numberCage + " в " + cageWhere.getNumberCage());
+        Animal tempAnimal = null;
+        //проверим можно ли перевести в КлеткуБ
+        boolean access = cageWhere.isFreePlaces(getAnimalByName(nameAnimal));
+        if (access) {
+            System.out.println("Перевод возможен");
+            tempAnimal = takeOutAnimal(nameAnimal);     //вывести
+            cageWhere.addAnimal(tempAnimal);            //добавить
+        } else {
+            System.out.println("Перевод невозможен, перепроверьте вместимость и тип животного");
+        }
+    }
+
+    public void printAnimalsAdded() {
+        System.out.println("Список животных в клетке №" + numberCage + ":");
+        if (animals.isEmpty()) {
+            System.out.println("Пусто");
+        } else {
+            for (Animal animal : animals) {
+                System.out.println(animal.getName());
+            }
+        }
+        System.out.println();
+    }
+
+    //получение животного по его имени
+    public Animal getAnimalByName(String nameAnimal) {
+        Animal tempAnimal = null;
+        for (Animal animal : animals) {
+            if (animal.getName().equals(nameAnimal)) {
+                tempAnimal = animal;
+            }
+        }
+        return tempAnimal;
+    }
+
+    public Animal getYoungestAnimal() {
+        int value = Integer.MAX_VALUE;
+        Animal tempAnimal = null;
+        for (Animal animal : animals) {
+            if (animal.getAge() < value) {
+                tempAnimal = animal;
+                value = animal.getAge();
+            }
+        }
+        return tempAnimal;
+    }
+
+    public Animal getOldestAnimal() {
+        int value = 0;
+        Animal tempAnimal = null;
+        for (Animal animal : animals) {
+            if (animal.getAge() > value) {
+                tempAnimal = animal;
+                value = animal.getAge();
+            }
+        }
+        return tempAnimal;
+    }
+
+
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public ArrayList<T> getAnimals() {
+        return animals;
+    }
+
+    public int getNumberCage() {
+        return numberCage;
+    }
+
+}
+```
+
+```java 
+public class Start {
+
+    public static void main(String[] args) {
+        Snake snake1 = new Snake("snake1", 1);
+        Snake snake2 = new Snake("snake2", 2);
+        Snake snake3 = new Snake("snake3", 3);
+        Dolphin dolphin1 = new Dolphin("dolphin1", 1);
+        Dolphin dolphin2 = new Dolphin("dolphin2", 2);
+        Dolphin dolphin3 = new Dolphin("dolphin3", 3);
+        Dolphin dolphin4 = new Dolphin("dolphin4", 4);
+        Bear bear1 = new Bear("bear1", 1);
+        Bear bear2 = new Bear("bear2", 2);
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        Cage<Snake> cage1 = new Cage(2, 11);
+        Cage<Dolphin> cage2 = new Cage(3, 12);
+        Cage<Bear> cage3 = new Cage(1, 13);
+        Cage<Dolphin> cage4 = new Cage(10, 14);
+
+        /**
+         * Показ общего функционала (добавление удаление из клетки)
+         */
+        System.out.println("------------Показ общего функционала (добавление-удаление из клетки)------------");
+        System.out.println();
+        cage1.addAnimal(snake1);
+        //cage1.addAnimal(dolphin1); //сразу ошибка на уровне компиляции, у нас уже cage1 исп тип "змея", а не "дельфин"
+        cage1.addAnimal(snake2);
+        cage1.addAnimal(snake3);
+        cage1.printAnimalsAdded();
+
+        cage2.addAnimal(dolphin1);
+        cage2.addAnimal(dolphin2);
+        cage2.addAnimal(dolphin3);
+        cage2.addAnimal(dolphin4);
+        cage2.printAnimalsAdded();
+
+        System.out.println("самый молодой возраст у " + cage2.getYoungestAnimal().getName()
+                + " = " + cage2.getYoungestAnimal().getAge());
+        System.out.println("самый большой возраст у " + cage2.getOldestAnimal().getName()
+                + " = " + cage2.getOldestAnimal().getAge());
+        System.out.println();
+
+        cage2.takeOutAnimal("dolphin2");
+        cage2.printAnimalsAdded();
+
+        cage3.addAnimal(bear1);
+        cage3.addAnimal(bear2);
+        cage3.printAnimalsAdded();
+
+        cage4.printAnimalsAdded();
+        cage2.transferAnimal("dolphin3", cage4);
+        cage2.printAnimalsAdded();
+        cage4.printAnimalsAdded();
+
+        cage2.transferAnimal("dolphin1", cage4);
+        cage2.printAnimalsAdded();
+        cage4.printAnimalsAdded();
+
+        /**
+         * В двух разных клетках поменять местами самое старое и самое молодое животное
+         */
+        System.out.println("------------В двух разных клетках поменять местами самое старое и самое молодое животное------------");
+        System.out.println();
+        Cage<Snake> cage20 = new Cage(3, 20);
+        Cage<Dolphin> cage30 = new Cage(3, 30);
+        Cage<Bear> cage40 = new Cage(3, 40);
+        Cage<Snake> cage50 = new Cage(3, 50);
+
+        Snake snake101 = new Snake("snake101", 1);
+        Snake snake102 = new Snake("snake102", 2);
+        Snake snake103 = new Snake("snake103", 3);
+        Snake snake104 = new Snake("snake104", 4);
+
+        cage20.addAnimal(snake101);
+        cage20.addAnimal(snake102);
+        cage50.addAnimal(snake103);
+        cage50.addAnimal(snake104);
+
+        cage20.printAnimalsAdded();
+        cage30.printAnimalsAdded();
+        cage40.printAnimalsAdded();
+        cage50.printAnimalsAdded();
+
+        changeAnimalYoungestAndOldest(cage20, cage50);
+    }
+
+    public static void changeAnimalYoungestAndOldest(Cage cage1, Cage cage2) {
+        System.out.println("---Смена местами самого молодого и самого старого---");
+        cage1.printAnimalsAdded();
+        cage2.printAnimalsAdded();
+        cage1.transferAnimal(cage1.getYoungestAnimal().getName(), cage2);
+        cage2.transferAnimal(cage2.getOldestAnimal().getName(), cage1);
+        cage1.printAnimalsAdded();
+        cage2.printAnimalsAdded();
+    }
+
+}
+```
+
+Вывод:
+
+```java 
+/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=58667:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/s.kufarev/IdeaProjects/pvlk/out/production/pvlk generics.task2.Start
+------------Показ общего функционала (добавление-удаление из клетки)------------
+
+Пробуем добавить в клетку №11 snake1 = Успех. Животное добавлено.
+Пробуем добавить в клетку №11 snake2 = Успех. Животное добавлено.
+Пробуем добавить в клетку №11 snake3 = Отказ. В клетке максимальное кол-во животных.
+Список животных в клетке №11:
+snake1
+snake2
+
+Пробуем добавить в клетку №12 dolphin1 = Успех. Животное добавлено.
+Пробуем добавить в клетку №12 dolphin2 = Успех. Животное добавлено.
+Пробуем добавить в клетку №12 dolphin3 = Успех. Животное добавлено.
+Пробуем добавить в клетку №12 dolphin4 = Отказ. В клетке максимальное кол-во животных.
+Список животных в клетке №12:
+dolphin1
+dolphin2
+dolphin3
+
+самый молодой возраст у dolphin1 = 1
+самый большой возраст у dolphin3 = 3
+
+dolphin2: Животное выведено из клетки
+Список животных в клетке №12:
+dolphin1
+dolphin3
+
+Пробуем добавить в клетку №13 bear1 = Успех. Животное добавлено.
+Пробуем добавить в клетку №13 bear2 = Отказ. В клетке максимальное кол-во животных.
+Список животных в клетке №13:
+bear1
+
+Список животных в клетке №14:
+Пусто
+
+Попытка трансфера животного dolphin3 из клетки №12 в 14
+Перевод возможен
+dolphin3: Животное выведено из клетки
+Пробуем добавить в клетку №14 dolphin3 = Успех. Животное добавлено.
+Список животных в клетке №12:
+dolphin1
+
+Список животных в клетке №14:
+dolphin3
+
+Попытка трансфера животного dolphin1 из клетки №12 в 14
+Перевод возможен
+dolphin1: Животное выведено из клетки
+Пробуем добавить в клетку №14 dolphin1 = Успех. Животное добавлено.
+Список животных в клетке №12:
+Пусто
+
+Список животных в клетке №14:
+dolphin3
+dolphin1
+
+------------В двух разных клетках поменять местами самое старое и самое молодое животное------------
+
+Пробуем добавить в клетку №20 snake101 = Успех. Животное добавлено.
+Пробуем добавить в клетку №20 snake102 = Успех. Животное добавлено.
+Пробуем добавить в клетку №50 snake103 = Успех. Животное добавлено.
+Пробуем добавить в клетку №50 snake104 = Успех. Животное добавлено.
+Список животных в клетке №20:
+snake101
+snake102
+
+Список животных в клетке №30:
+Пусто
+
+Список животных в клетке №40:
+Пусто
+
+Список животных в клетке №50:
+snake103
+snake104
+
+---Смена местами самого молодого и самого старого---
+Список животных в клетке №20:
+snake101
+snake102
+
+Список животных в клетке №50:
+snake103
+snake104
+
+Попытка трансфера животного snake101 из клетки №20 в 50
+Перевод возможен
+snake101: Животное выведено из клетки
+Пробуем добавить в клетку №50 snake101 = Успех. Животное добавлено.
+Попытка трансфера животного snake104 из клетки №50 в 20
+Перевод возможен
+snake104: Животное выведено из клетки
+Пробуем добавить в клетку №20 snake104 = Успех. Животное добавлено.
+Список животных в клетке №20:
+snake102
+snake104
+
+Список животных в клетке №50:
+snake103
+snake101
+
+
+Process finished with exit code 0
+
+```
+
+
+
+
 
 
 
