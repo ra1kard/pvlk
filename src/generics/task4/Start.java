@@ -7,11 +7,21 @@ import java.util.Random;
 
 public class Start {
 
+    /**
+     * найдите сокровище, которое спрятано на острове
+     * 1. и сообщите о его содержимом
+     * 2. и сколько шагов пришлось пройти, чтобы найти сокровище
+     * 3. если острова нет, выведите сообщение "Остров не существует"
+     * 4. не забудьте о том, что у нас есть карта сокровищ, в которой указано название острова
+     * опционально:
+     * 5. после этого, выведите те острова, в котором спрятаны пустые сундуки
+     * 6. а после выведите остров с самым богатым сундуком
+     */
     public static void main(String[] args) {
-        Island island1 = new Island("Филиппины", new Chest<Diamonds>(new Diamonds(0)));
-        Island island2 = new Island("Мальдивы", new Chest<Diamonds>(new Diamonds(50)));
-        Island island3 = new Island("Бермуда", new Chest<Gold>(new Gold(33)));
-        Island island4 = new Island("Майорка", new Chest<Gold>(new Gold(11)));
+        Island island1 = new Island("Филиппины", new Chest<>(new Diamonds(0)));
+        Island island2 = new Island("Мальдивы", new Chest<>(new Diamonds(50)));
+        Island island3 = new Island("Бермуда", new Chest<>(new Gold(33)));
+        Island island4 = new Island("Майорка", new Chest<>(new Gold(11)));
 
         TreasureMap treasureMap1 = new TreasureMap("Филиппины", 33);
         TreasureMap treasureMap2 = new TreasureMap("Мальдивы", 17);
@@ -91,16 +101,5 @@ public class Start {
         }
         return tempIsland;
     }
-
-    //найдите сокровище, которое спрятано на острове:
-    // + и сообщите о его содержимом
-    // + и сколько шагов пришлось пройти, чтобы найти сокровище
-    // + если острова нет, выведите сообщение "Остров не существует"
-    // + не забудьте о том, что у нас есть карта сокровищ, в которой указано название острова
-    // - после этого, выведите те острова, в котором спрятаны пустые сундуки
-    // - а после выведите остров с самым богатым сундуком
-
-    //  ы это разве верно? первый Diamonds idea подсказывает лишний
-    //  ы Island island1 = new Island("Филиппины", new Chest<Diamonds>(new Diamonds(0)));
 
 }
