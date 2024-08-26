@@ -448,38 +448,6 @@ private static void hereWillBeTrouble() throws ArithmeticException {
 # Проверяемые и непроверяемые исключения
 
 
-___
-___
-___
-
-```java
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
