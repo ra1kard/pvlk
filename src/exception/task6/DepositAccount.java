@@ -1,6 +1,6 @@
 package exception.task6;
 
-public class DepositAccount extends Account implements AccountOperation {
+public class DepositAccount extends Account {
     private boolean active = false;
 
     DepositAccount(int number, double balance) {
@@ -16,24 +16,6 @@ public class DepositAccount extends Account implements AccountOperation {
     public String getName() {
         return "◦ Депозитный счет";
     }
-
-    //метод внесения денег на счет
-    /*@Override
-    public void deposit(double amount) {
-
-    }*/
-
-    /*//метод снятия денег со счета
-    @Override
-    public void withdraw(double amount) {
-
-    }*/
-
-    /*//метод получения текущего баланса счета
-    @Override
-    public double getBalance() {
-
-    }*/
 
     @Override
     public String toString() {

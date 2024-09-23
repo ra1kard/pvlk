@@ -8,10 +8,10 @@ package exception.task6;
  */
 public interface AccountOperation {
 
-    /*void deposit(double amount);
+    void deposit(double amount);
 
     void withdraw(double amount);
 
-    void getBalance();*/
+    double getBalance();
 
 }

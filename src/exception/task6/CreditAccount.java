@@ -1,6 +1,6 @@
 package exception.task6;
 
-public class CreditAccount extends Account implements AccountOperation {
+public class CreditAccount extends Account {
     private boolean active = false;
     private double creditLimit;
     private double percentCredit;
@@ -28,24 +28,6 @@ public class CreditAccount extends Account implements AccountOperation {
     public String getName() {
         return "◦ Кредитный счет";
     }
-
-    /*//метод внесения денег на счет
-    @Override
-    public void deposit(double amount) {
-
-    }*/
-
-    /*//метод снятия денег со счета
-    @Override
-    public void withdraw(double amount) {
-
-    }*/
-
-    /*//метод получения текущего баланса счета
-    @Override
-    public void getBalance() {
-
-    }*/
 
     @Override
     public String toString() {

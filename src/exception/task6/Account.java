@@ -18,11 +18,11 @@ public abstract class Account implements AccountOperation {
         return name;
     }
 
-    void deposit(double amount) {
+    public void deposit(double amount) {
         this.balance += amount;
     }
 
-    void withdraw(double amount) {
+    public void withdraw(double amount) {
         this.balance -= amount;
     }
 
