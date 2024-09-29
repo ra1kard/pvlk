@@ -1,6 +1,7 @@
 package exception.task6;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Счета пользователей должны храниться в классе AccountRepository
@@ -10,32 +11,27 @@ import java.util.ArrayList;
  * Но и обеспечивать возможность удаления, добавления, изменения, получения данных
  * Вся логика связанная с сохр данных должна располагаться именно в репозиториях
  */
-public class AccountRepository {
-    private ArrayList<Account> accounts;
+public class AccountRepository implements AccountRepositoryOperation {
+    private HashMap<Integer, Account> mapAccounts;
 
     AccountRepository() {
-        accounts = new ArrayList<>();
+        mapAccounts = new HashMap<>();
     }
 
     public void addAccount(Account account) {
-        this.accounts.add(account);
-    }
-
-    public ArrayList<Account> getAccounts() {
-        return accounts;
+        mapAccounts.put(account.getNumber(), account);
     }
 
     public Account getAccountByNumber(int number) {
-        for (Account account : accounts) {
-            if (account.getNumber() == number) {
-                return account;
-            }
-        }
-        return null;
+        return mapAccounts.get(number);
     }
 
     public void removeAccount(Account account) {
-        this.accounts.remove(account);
+        mapAccounts.remove(account.getNumber());
     }
+
+    /*public boolean isAccountExists(Account account) {
+
+    }*/
 
 }

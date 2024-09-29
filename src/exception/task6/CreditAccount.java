@@ -26,7 +26,7 @@ public class CreditAccount extends Account {
 
     @Override
     public String getName() {
-        return "◦ Кредитный счет";
+        return "◦ Кредитный     счет";
     }
 
     @Override

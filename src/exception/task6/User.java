@@ -1,15 +1,15 @@
 package exception.task6;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
     private final int id;
     private String fullName;
     private String phoneNumber;
-    private ArrayList<Account> accountList;
+    private HashMap<Integer, Account> mapAccounts;
 
     public User(int id, String fullName, String phoneNumber) {
-        accountList = new ArrayList<>();
+        mapAccounts = new HashMap<>();
         this.id = id;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -28,26 +28,20 @@ public class User {
     }
 
     public void addAccount(Account account) {
-        accountList.add(account);
+        mapAccounts.put(account.getNumber(), account);
     }
 
-    public ArrayList<Account> getAccountList() {
-        return accountList;
+    public Account getAccount(int number) {
+        return mapAccounts.get(number);
     }
 
-    public Account getAccountById(int id) {
-        for (Account account : accountList) {
-            if (account.getNumber() == id) {
-                return account;
-            }
-        }
-        return null;
+    public HashMap getMapAccounts() {
+        return mapAccounts;
     }
 
     @Override
     public String toString() {
-        return "id: " + getId()
-                + ",  fullName: " + getFullName()
+        return "fullName: " + getFullName()
                 + ",  phoneNumber: " + getPhoneNumber();
     }
 

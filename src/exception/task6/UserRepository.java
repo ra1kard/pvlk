@@ -1,6 +1,6 @@
 package exception.task6;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Пользователи должны храниться в классе UserRepository
@@ -10,31 +10,23 @@ import java.util.ArrayList;
  * Но и обеспечивать возможность удаления, добавления, изменения, получения данных
  * Вся логика связанная с сохр данных должна располагаться именно в репозиториях
  */
-public class UserRepository {
-    private ArrayList<User> users;
+public class UserRepository implements UserRepositoryOperation {
+    private HashMap<Integer, User> mapUsers;
 
     UserRepository() {
-        users = new ArrayList<>();
+        mapUsers = new HashMap<>();
     }
 
     public void addUser(User user) {
-        this.users.add(user);
-    }
-
-    public ArrayList<User> getUsers() {
-        return users;
+        mapUsers.put(user.getId(), user);
     }
 
     public User getUserById(int id) {
-        for (User user : users) {
-            if (user.getId() == id) {
-                return user;
-            }
-        }
-        return null;
+        return mapUsers.get(id);
     }
 
-    public User getUserByName(String name) {
+    //TODO: могут быть совпадения имен, учесть, пока закомментирую getUserByName(String name)
+    /*public User getUserByName(String name) {
         for (User user : users) {
             //if (Objects.equals(user.getFullName(), name)) {
             if (user.getFullName().equals(name)) {
@@ -42,9 +34,10 @@ public class UserRepository {
             }
         }
         return null;
-    }
+    }*/
 
-    public User getUserByPhone(String phone) {
+    //TODO: подумать как можно реализовать getUserByPhone(String phone)
+    /*public User getUserByPhone(String phone) {
         for (User user : users) {
             //if (Objects.equals(user.getPhoneNumber(), phone)) {
             if (user.getPhoneNumber().equals(phone)) {
@@ -52,10 +45,10 @@ public class UserRepository {
             }
         }
         return null;
-    }
+    }*/
 
-    public void removeUser(User user) {
-        this.users.remove(user);
+    public void removeUser(Integer id) {
+        mapUsers.remove(id);
     }
 
 }

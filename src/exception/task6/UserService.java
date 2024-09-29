@@ -1,5 +1,7 @@
 package exception.task6;
 
+import org.w3c.dom.ls.LSOutput;
+
 /**
  * 🟠 Вся логика связ с возм или невозм вып операций, ген или обр исключений
  * ✅ при этом в классе сервисе не должно храниться инф о счетах и пользователях,
@@ -15,16 +17,33 @@ public class UserService {
         this.accountRepository = accountRepository;
     }
 
-    public void transferMoney(User fromUser, Account fromAccount, User toUser, Account toAccount, double amount) {
-        //представим, что мы проверили по № телефона есть счет from и to, полученные данные корректны
-        fromAccount.withdraw(amount);
-        toAccount.deposit(amount);
+    public void transferMoney(User fromUser, User ToUser, Account fromAccount, Account toAccount, double amount) {
+        try {
+            userRepository.getUserById(fromUser.getId());
+            userRepository.getUserById(ToUser.getId());
+
+            try {
+                fromAccount.getBalance();   //чтобы не совершать отм действия из-за вероятного отс toAcc запросим баланс
+                toAccount.getBalance();
+                fromAccount.withdraw(amount);
+                toAccount.deposit(amount);
+                System.out.println("Операция выполнена");
+            } catch (NullPointerException e) {
+                System.out.println("Account not found, операция отменена");
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("User not found, операция отменена");
+        }
+
+        //validateUserExists(user);
+
     }
 
-    public void transferMoneyToYourAccount(User user, Account fromAccount, Account toAccount, double amount) {
-        //представим, что мы проверили по № телефона есть счет from и to, полученные данные корректны
-        fromAccount.withdraw(amount);
-        toAccount.deposit(amount);
-    }
+    /*public void validateUserExists(User user) throws UserNotFoundException {
+        if () {
+            throw new UserNotFoundException("Пользователь НЕ НАЙДЕН");
+        }
+    }*/
 
 }

@@ -14,7 +14,7 @@ public class DepositAccount extends Account {
 
     @Override
     public String getName() {
-        return "◦ Депозитный счет";
+        return "◦ Депозитный    счет";
     }
 
     @Override
