@@ -1,21 +1,17 @@
 package exception.task6;
 
 public class CreditAccount extends Account {
-    private boolean active = false;
     private double creditLimit;
     private double percentCredit;
+    private final TypeAccount typeAccount = TypeAccount.CREDIT;
 
     CreditAccount(int number, double balance, double creditLimit, double percentCredit) {
         super(number, balance);
-        this.active = true;
         this.creditLimit = creditLimit;
         this.percentCredit = percentCredit;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
+    @Override
     public double getCreditLimit() {
         return creditLimit;
     }
@@ -33,6 +29,11 @@ public class CreditAccount extends Account {
     public String toString() {
         return "Номер счета: " + getNumber()
                 + ",  баланс: " + getBalance();
+    }
+
+    @Override
+    public TypeAccount getTypeAccount() {
+        return typeAccount;
     }
 
 }

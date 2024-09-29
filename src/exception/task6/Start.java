@@ -20,13 +20,15 @@ public class Start {
 
         //подразумеваем, что создаем Счета только через репозиторий (пусть пока сразу с балансом, потом сдел изменение)
         accountRepository.addAccount(new DepositAccount(105201, 44000));
-        accountRepository.addAccount(new DepositAccount(105202, 55000));
+        accountRepository.addAccount(new DepositAccount(105202, 3000));
         accountRepository.addAccount(new DepositAccount(105203, 283100));
         accountRepository.addAccount(new DepositAccount(105204, 140000));
-        accountRepository.addAccount(new CreditAccount(105205, -15000, 155000, 15));
-        accountRepository.addAccount(new CreditAccount(105206, -155000, 99000, 27));
+
+        accountRepository.addAccount(new CreditAccount(105205, 3000, 155000, 15));
+        accountRepository.addAccount(new CreditAccount(105206, -113000, -115000, 27));
         accountRepository.addAccount(new CreditAccount(105207, -333000, 999000, 27));
         accountRepository.addAccount(new CreditAccount(105208, 222000, 1555000, 6));
+
         accountRepository.addAccount(new SavingAccount(105209, 1222000, 10));
         accountRepository.addAccount(new SavingAccount(105210, 7555000, 15));
         accountRepository.addAccount(new SavingAccount(105211, 555000, 15));
@@ -38,6 +40,7 @@ public class Start {
         userRepository.getUserById(1).addAccount(accountRepository.getAccountByNumber(105209));
 
         userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(105202));
+        userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(105206));
         userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(105210));
 
         //выведем полную информацию по юзеру и его счетам
@@ -70,13 +73,20 @@ public class Start {
         //попробуем перевод через Сервис со счета юзераА, на счет юзераА (свой счет)
         printInfoUser(userRepository.getUserById(3));
         userService.transferMoney(
-                userRepository.getUserById(3),                  //3 real A
-                userRepository.getUserById(3),                  //3 real A
-                accountRepository.getAccountByNumber(105202),   //105202 real A
-                accountRepository.getAccountByNumber(105210),   //105210 real A
+                3,
+                3,
+                105206,
+                105210,
                 3000
         );
         printInfoUser(userRepository.getUserById(3));
+
+        /*System.out.println(accountRepository.getAccountByNumber(105201));
+        System.out.println(accountRepository.getAccountByNumber(105205));
+        System.out.println();
+        System.out.println(accountRepository.getAccountByNumber(105201).getTypeAccount());
+        System.out.println(accountRepository.getAccountByNumber(105205).getTypeAccount());
+        System.out.println(accountRepository.getAccountByNumber(105209).getTypeAccount());*/
 
         //ИТЕРАЦИЯ 4
         //исключительная ситуация "Не найден счет при переводе"

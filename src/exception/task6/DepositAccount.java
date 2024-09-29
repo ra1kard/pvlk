@@ -1,15 +1,10 @@
 package exception.task6;
 
 public class DepositAccount extends Account {
-    private boolean active = false;
+    private final TypeAccount typeAccount = TypeAccount.DEPOSIT;
 
     DepositAccount(int number, double balance) {
         super(number, balance);
-        this.active = true;
-    }
-
-    public boolean isActive() {
-        return active;
     }
 
     @Override
@@ -21,6 +16,11 @@ public class DepositAccount extends Account {
     public String toString() {
         return "Номер счета: " + getNumber()
                 + ",  баланс: " + getBalance();
+    }
+
+    @Override
+    public TypeAccount getTypeAccount() {
+        return typeAccount;
     }
 
 }

@@ -1,6 +1,5 @@
 package exception.task6;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -29,9 +28,5 @@ public class AccountRepository implements AccountRepositoryOperation {
     public void removeAccount(Account account) {
         mapAccounts.remove(account.getNumber());
     }
-
-    /*public boolean isAccountExists(Account account) {
-
-    }*/
 
 }

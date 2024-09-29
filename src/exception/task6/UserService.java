@@ -1,7 +1,5 @@
 package exception.task6;
 
-import org.w3c.dom.ls.LSOutput;
-
 /**
  * 🟠 Вся логика связ с возм или невозм вып операций, ген или обр исключений
  * ✅ при этом в классе сервисе не должно храниться инф о счетах и пользователях,
@@ -17,33 +15,37 @@ public class UserService {
         this.accountRepository = accountRepository;
     }
 
-    public void transferMoney(User fromUser, User ToUser, Account fromAccount, Account toAccount, double amount) {
+    public void transferMoney(Integer idFromUser, Integer idToUser, Integer idFromAccount, Integer idToAccount, double amount) {
         try {
-            userRepository.getUserById(fromUser.getId());
-            userRepository.getUserById(ToUser.getId());
-
+            userRepository.getUserById(idFromUser);
+            userRepository.getUserById(idToUser);
             try {
-                fromAccount.getBalance();   //чтобы не совершать отм действия из-за вероятного отс toAcc запросим баланс
-                toAccount.getBalance();
-                fromAccount.withdraw(amount);
-                toAccount.deposit(amount);
-                System.out.println("Операция выполнена");
+                accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+                accountRepository.getAccountByNumber(idToAccount).getBalance();     //поймать исключение без действия
+                try {
+                    validateAmountAccount(accountRepository.getAccountByNumber(idFromAccount), amount);
+                    accountRepository.getAccountByNumber(idFromAccount).withdraw(amount);
+                    accountRepository.getAccountByNumber(idToAccount).deposit(amount);
+                    System.out.println("Операция выполнена");
+                } catch (NotEnoughAmountAccountException e) {
+                    throw new NotEnoughAmountAccountException("Wrong! Amount is not enough!");
+                }
             } catch (NullPointerException e) {
                 System.out.println("Account not found, операция отменена");
             }
-
         } catch (NullPointerException e) {
             System.out.println("User not found, операция отменена");
         }
-
-        //validateUserExists(user);
-
     }
 
-    /*public void validateUserExists(User user) throws UserNotFoundException {
-        if () {
-            throw new UserNotFoundException("Пользователь НЕ НАЙДЕН");
+    public void validateAmountAccount(Account account, Double amount) throws NotEnoughAmountAccountException {
+        if ((account.getTypeAccount() == TypeAccount.DEPOSIT || account.getTypeAccount() == TypeAccount.SAVING)
+                && (account.getBalance() - amount) < 0) {
+            throw new NotEnoughAmountAccountException("Недостаточно средств на счете");
+        } else if (account.getTypeAccount() == TypeAccount.CREDIT
+                && (account.getBalance() - amount) < account.getCreditLimit()) {
+            throw new NotEnoughAmountAccountException("Недостаточно средств на счете");
         }
-    }*/
+    }
 
 }

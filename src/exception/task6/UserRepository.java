@@ -25,28 +25,6 @@ public class UserRepository implements UserRepositoryOperation {
         return mapUsers.get(id);
     }
 
-    //TODO: могут быть совпадения имен, учесть, пока закомментирую getUserByName(String name)
-    /*public User getUserByName(String name) {
-        for (User user : users) {
-            //if (Objects.equals(user.getFullName(), name)) {
-            if (user.getFullName().equals(name)) {
-                return user;
-            }
-        }
-        return null;
-    }*/
-
-    //TODO: подумать как можно реализовать getUserByPhone(String phone)
-    /*public User getUserByPhone(String phone) {
-        for (User user : users) {
-            //if (Objects.equals(user.getPhoneNumber(), phone)) {
-            if (user.getPhoneNumber().equals(phone)) {
-                return user;
-            }
-        }
-        return null;
-    }*/
-
     public void removeUser(Integer id) {
         mapUsers.remove(id);
     }
