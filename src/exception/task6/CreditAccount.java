@@ -2,10 +2,10 @@ package exception.task6;
 
 public class CreditAccount extends Account {
     private double creditLimit;
-    private double percentCredit;
+    private int percentCredit;
     private final TypeAccount typeAccount = TypeAccount.CREDIT;
 
-    CreditAccount(int number, double balance, double creditLimit, double percentCredit) {
+    CreditAccount(int number, double balance, double creditLimit, int percentCredit) {
         super(number, balance);
         this.creditLimit = creditLimit;
         this.percentCredit = percentCredit;

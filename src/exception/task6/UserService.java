@@ -48,4 +48,39 @@ public class UserService {
         }
     }
 
+    public int refuelCar(boolean WithdrawBonus, int liters, int costForLiter, Integer idFromAccount, Integer idFromUser) {
+        int res = 0;
+        if (WithdrawBonus) {
+            try {
+                userRepository.getUserById(idFromUser);
+                try {
+                    accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+                    res = (int) (liters
+                            * costForLiter
+                            - accountRepository.getAccountByNumber(idFromAccount).spendBalanceLoyalty());
+                } catch (NullPointerException e) {
+                    System.out.println("Account not found, операция отменена");
+                }
+            } catch (NullPointerException e) {
+                System.out.println("User not found, операция отменена");
+            }
+        } else {
+            try {
+                userRepository.getUserById(idFromUser);
+                try {
+                    accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+
+                    accountRepository.getAccountByNumber(idFromAccount).addBalanceLoyalty(liters, costForLiter);
+                    res = liters * costForLiter;
+
+                } catch (NullPointerException e) {
+                    System.out.println("Account not found, операция отменена");
+                }
+            } catch (NullPointerException e) {
+                System.out.println("User not found, операция отменена");
+            }
+        }
+        return res;
+    }
+
 }

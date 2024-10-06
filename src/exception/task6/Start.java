@@ -34,14 +34,26 @@ public class Start {
         accountRepository.addAccount(new SavingAccount(105211, 555000, 15));
         accountRepository.addAccount(new SavingAccount(105212, 15000, 15));
 
+        accountRepository.addAccount(new FuelLoyaltyAccount(205201, 100, 3));
+        accountRepository.addAccount(new FuelLoyaltyAccount(205202, 0, 5));
+        accountRepository.addAccount(new FuelLoyaltyAccount(205203, 0, 10));
+
+        accountRepository.addAccount(new StoreFiftyLoyaltyAccount(305201, 50, 5));
+        accountRepository.addAccount(new StoreFiftyLoyaltyAccount(305202, 50, 10));
+        accountRepository.addAccount(new StoreFiftyLoyaltyAccount(305203, 50, 15));
+
         //добавим юзерам счета
         userRepository.getUserById(1).addAccount(accountRepository.getAccountByNumber(105201));
         userRepository.getUserById(1).addAccount(accountRepository.getAccountByNumber(105205));
         userRepository.getUserById(1).addAccount(accountRepository.getAccountByNumber(105209));
+        userRepository.getUserById(1).addAccount(accountRepository.getAccountByNumber(205201));
+        userRepository.getUserById(1).addAccount(accountRepository.getAccountByNumber(305201));
 
         userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(105202));
         userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(105206));
         userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(105210));
+        userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(205202));
+        userRepository.getUserById(3).addAccount(accountRepository.getAccountByNumber(305202));
 
         //выведем полную информацию по юзеру и его счетам
         /*printInfoUser(userRepository.getUserById(1));
@@ -71,38 +83,21 @@ public class Start {
 
         //ИТЕРАЦИЯ 3
         //попробуем перевод через Сервис со счета юзераА, на счет юзераА (свой счет)
-        printInfoUser(userRepository.getUserById(3));
+        /*printInfoUser(userRepository.getUserById(3));
         userService.transferMoney(
                 3,
                 3,
                 105206,
                 105210,
-                3000
+                2000
         );
-        printInfoUser(userRepository.getUserById(3));
-
-        /*System.out.println(accountRepository.getAccountByNumber(105201));
-        System.out.println(accountRepository.getAccountByNumber(105205));
-        System.out.println();
-        System.out.println(accountRepository.getAccountByNumber(105201).getTypeAccount());
-        System.out.println(accountRepository.getAccountByNumber(105205).getTypeAccount());
-        System.out.println(accountRepository.getAccountByNumber(105209).getTypeAccount());*/
+        printInfoUser(userRepository.getUserById(3));*/
 
         //ИТЕРАЦИЯ 4
-        //исключительная ситуация "Не найден счет при переводе"
-        /**
-         * Без исключения такая ошибка:
-         * Exception in thread "main" java.lang.NullPointerException: Cannot invoke "exception.task6.Account.deposit(double)" because "toAccount" is null
-         * 	at exception.task6.UserService.transferMoneyToYourAccount(UserService.java:27)
-         * 	at exception.task6.Start.main(Start.java:105)
-         */
-        /*userService.transferMoneyToYourAccount(
-                userRepository.getUserById(99),
-                accountRepository.getAccountByNumber(105202),
-                accountRepository.getAccountByNumber(105210),
-                1000);
+        //пополним карту заправки и спишем
         printInfoUser(userRepository.getUserById(1));
-        printInfoUser(userRepository.getUserById(3));*/
+        userService.refuelCar(false, 20, 59, 205201, 1);
+        printInfoUser(userRepository.getUserById(1));
     }
 
     public static void printInfoUser(User user) {

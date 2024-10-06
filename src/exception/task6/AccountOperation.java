@@ -14,4 +14,8 @@ public interface AccountOperation {
 
     double getBalance();
 
+    double spendBalanceLoyalty();
+
+    void addBalanceLoyalty(int liters, int costForLiter);
+
 }

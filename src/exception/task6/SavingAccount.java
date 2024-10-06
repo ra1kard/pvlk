@@ -1,10 +1,10 @@
 package exception.task6;
 
 public class SavingAccount extends Account {
-    private double percentPlus;
+    private int percentPlus;
     private final TypeAccount typeAccount = TypeAccount.SAVING;
 
-    public SavingAccount(int number, double balance, double percentPlus) {
+    public SavingAccount(int number, double balance, int percentPlus) {
         super(number, balance);
         this.percentPlus = percentPlus;
     }
