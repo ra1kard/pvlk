@@ -1,20 +1,10 @@
 package exception.task6;
 
 public class StoreFiftyLoyaltyAccount extends Account {
-    private int discount;
     private final TypeAccount typeAccount = TypeAccount.STORE;
 
-    StoreFiftyLoyaltyAccount(int number, double balance, int discount) {
-        super(number, balance);
-        this.discount = discount;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    StoreFiftyLoyaltyAccount(int number, double balance, int discountPercent) {
+        super(number, balance, discountPercent);
     }
 
     @Override

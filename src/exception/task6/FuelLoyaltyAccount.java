@@ -3,8 +3,8 @@ package exception.task6;
 public class FuelLoyaltyAccount extends Account {
     private final TypeAccount typeAccount = TypeAccount.FUEL;
 
-    FuelLoyaltyAccount(int number, double balance, int percentPlus) {
-        super(number, balance, percentPlus);
+    FuelLoyaltyAccount(int number, double balance, int discountPercent) {
+        super(number, balance, discountPercent);
     }
 
     @Override

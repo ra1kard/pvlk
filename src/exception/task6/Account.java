@@ -6,21 +6,21 @@ public abstract class Account implements AccountOperation {
     private String name;
     private TypeAccount typeAccount;
     private double creditLimit;
-    private int percentPlus;
+    private int discountPercent;
 
     Account(int number, double balance) {
         this.number = number;
         this.balance = balance;
     }
 
-    Account(int number, double balance, int percentPlus) {
+    Account(int number, double balance, int discountPercent) {
         this.number = number;
         this.balance = balance;
-        this.percentPlus = percentPlus;
+        this.discountPercent = discountPercent;
     }
 
-    public double getPercentPlus() {
-        return percentPlus;
+    public double getDiscountPercent() {
+        return discountPercent;
     }
 
     public int getNumber() {
@@ -49,8 +49,8 @@ public abstract class Account implements AccountOperation {
         return res;
     }
 
-    public void addBalanceLoyalty(int liters, int costForLiter) {
-        this.balance += liters * costForLiter * percentPlus / 100.0;
+    public void addBalanceLoyalty(double sumPurchase) {
+        this.balance += sumPurchase * discountPercent / 100.0;
     }
 
     public TypeAccount getTypeAccount() {

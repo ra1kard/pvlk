@@ -72,10 +72,8 @@ public class Start {
         /*printInfoUser(userRepository.getUserById(1));
         printInfoUser(userRepository.getUserById(3));
         userService.transferMoney(
-                userRepository.getUserById(1),
-                userRepository.getUserById(3),
-                accountRepository.getAccountByNumber(105291),   //105201 real A
-                accountRepository.getAccountByNumber(105202),   //105202 real B
+                105201,
+                105202,
                 4000
         );
         printInfoUser(userRepository.getUserById(1));
@@ -85,8 +83,6 @@ public class Start {
         //попробуем перевод через Сервис со счета юзераА, на счет юзераА (свой счет)
         /*printInfoUser(userRepository.getUserById(3));
         userService.transferMoney(
-                3,
-                3,
                 105206,
                 105210,
                 2000
@@ -95,8 +91,14 @@ public class Start {
 
         //ИТЕРАЦИЯ 4
         //пополним карту заправки и спишем
+        /*printInfoUser(userRepository.getUserById(1));
+        userService.refuelCar(false, 20, 59, 205201);
+        printInfoUser(userRepository.getUserById(1));*/
+
+        //ИТЕРАЦИЯ 5
+        //пополним карту заправки и спишем
         printInfoUser(userRepository.getUserById(1));
-        userService.refuelCar(false, 20, 59, 205201, 1);
+        userService.buyItem(false, 250, 305201);
         printInfoUser(userRepository.getUserById(1));
     }
 

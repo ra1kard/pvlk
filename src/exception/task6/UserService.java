@@ -15,26 +15,20 @@ public class UserService {
         this.accountRepository = accountRepository;
     }
 
-    public void transferMoney(Integer idFromUser, Integer idToUser, Integer idFromAccount, Integer idToAccount, double amount) {
+    public void transferMoney(Integer idFromAccount, Integer idToAccount, double amount) {
         try {
-            userRepository.getUserById(idFromUser);
-            userRepository.getUserById(idToUser);
+            accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+            accountRepository.getAccountByNumber(idToAccount).getBalance();     //поймать исключение без действия
             try {
-                accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
-                accountRepository.getAccountByNumber(idToAccount).getBalance();     //поймать исключение без действия
-                try {
-                    validateAmountAccount(accountRepository.getAccountByNumber(idFromAccount), amount);
-                    accountRepository.getAccountByNumber(idFromAccount).withdraw(amount);
-                    accountRepository.getAccountByNumber(idToAccount).deposit(amount);
-                    System.out.println("Операция выполнена");
-                } catch (NotEnoughAmountAccountException e) {
-                    throw new NotEnoughAmountAccountException("Wrong! Amount is not enough!");
-                }
-            } catch (NullPointerException e) {
-                System.out.println("Account not found, операция отменена");
+                validateAmountAccount(accountRepository.getAccountByNumber(idFromAccount), amount);
+                accountRepository.getAccountByNumber(idFromAccount).withdraw(amount);
+                accountRepository.getAccountByNumber(idToAccount).deposit(amount);
+                System.out.println("Операция выполнена");
+            } catch (NotEnoughAmountAccountException e) {
+                throw new NotEnoughAmountAccountException("Wrong! Amount is not enough!");
             }
         } catch (NullPointerException e) {
-            System.out.println("User not found, операция отменена");
+            System.out.println("Account not found, операция отменена");
         }
     }
 
@@ -48,36 +42,45 @@ public class UserService {
         }
     }
 
-    public int refuelCar(boolean WithdrawBonus, int liters, int costForLiter, Integer idFromAccount, Integer idFromUser) {
-        int res = 0;
+    public double refuelCar(boolean WithdrawBonus, int liters, int costForLiter, Integer idFromAccount) {
+        double res = 0;
         if (WithdrawBonus) {
             try {
-                userRepository.getUserById(idFromUser);
-                try {
-                    accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
-                    res = (int) (liters
-                            * costForLiter
-                            - accountRepository.getAccountByNumber(idFromAccount).spendBalanceLoyalty());
-                } catch (NullPointerException e) {
-                    System.out.println("Account not found, операция отменена");
-                }
+                accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+                res = liters
+                        * costForLiter
+                        - accountRepository.getAccountByNumber(idFromAccount).spendBalanceLoyalty();
             } catch (NullPointerException e) {
-                System.out.println("User not found, операция отменена");
+                System.out.println("Account not found, операция отменена");
             }
         } else {
             try {
-                userRepository.getUserById(idFromUser);
-                try {
-                    accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
-
-                    accountRepository.getAccountByNumber(idFromAccount).addBalanceLoyalty(liters, costForLiter);
-                    res = liters * costForLiter;
-
-                } catch (NullPointerException e) {
-                    System.out.println("Account not found, операция отменена");
-                }
+                accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+                accountRepository.getAccountByNumber(idFromAccount).addBalanceLoyalty(liters * costForLiter);
+                res = liters * costForLiter;
             } catch (NullPointerException e) {
-                System.out.println("User not found, операция отменена");
+                System.out.println("Account not found, операция отменена");
+            }
+        }
+        return res;
+    }
+
+    public double buyItem(boolean WithdrawBonus, double sumPurchase, Integer idFromAccount) {
+        double res = 0;
+        if (WithdrawBonus) {
+            try {
+                accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+                res = sumPurchase - accountRepository.getAccountByNumber(idFromAccount).spendBalanceLoyalty();
+            } catch (NullPointerException e) {
+                System.out.println("Account not found, операция отменена");
+            }
+        } else {
+            try {
+                accountRepository.getAccountByNumber(idFromAccount).getBalance();   //поймать исключение без действия
+                accountRepository.getAccountByNumber(idFromAccount).addBalanceLoyalty(sumPurchase);
+                res = sumPurchase;
+            } catch (NullPointerException e) {
+                System.out.println("Account not found, операция отменена");
             }
         }
         return res;

@@ -16,6 +16,6 @@ public interface AccountOperation {
 
     double spendBalanceLoyalty();
 
-    void addBalanceLoyalty(int liters, int costForLiter);
+    void addBalanceLoyalty(double sumPurchase);
 
 }
