@@ -10,23 +10,31 @@ import java.util.HashMap;
  * Но и обеспечивать возможность удаления, добавления, изменения, получения данных
  * Вся логика связанная с сохр данных должна располагаться именно в репозиториях
  */
-public class AccountRepository implements AccountRepositoryOperation {
+public class AccountRepository implements RepositoryOperation <Account> {
     private HashMap<Integer, Account> mapAccounts;
 
     AccountRepository() {
         mapAccounts = new HashMap<>();
     }
 
-    public void addAccount(Account account) {
+    @Override
+    public void add(Account account) {
         mapAccounts.put(account.getNumber(), account);
     }
 
-    public Account getAccountByNumber(int number) {
-        return mapAccounts.get(number);
+    @Override
+    public Account getById(int id) {
+        return mapAccounts.get(id);
     }
 
-    public void removeAccount(Account account) {
+    @Override
+    public void remove(Account account) {
         mapAccounts.remove(account.getNumber());
+    }
+
+    @Override
+    public void remove(int id) {
+        mapAccounts.remove(id);
     }
 
 }
